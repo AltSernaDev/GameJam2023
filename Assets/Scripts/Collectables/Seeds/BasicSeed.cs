@@ -12,6 +12,7 @@ public class BasicSeed : Seed
         C = 3,
         D = 5
     }
+
     public SeedType seedType;
 
     private void OnEnable()
