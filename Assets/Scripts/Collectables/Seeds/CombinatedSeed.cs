@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CombinatedSeed : Seed
 {
-    public enum SeedType: int
+    public enum SeedType : int
     {
         AB = 1,
         BC,
@@ -32,7 +32,7 @@ public class CombinatedSeed : Seed
                 break;
             case SeedType.BC:
                 //Mejorar Spawn
-                if(affectedSeed.Status == GrowthStatus.planted)
+                if (affectedSeed.Status == GrowthStatus.planted)
                 {
                     affectedSeed.MayorSpawnPercentage = 0;
                 }
@@ -54,7 +54,7 @@ public class CombinatedSeed : Seed
                 //No FX feedback
                 break;
         }
-    }   
+    }
 
     public override void SpawnNewSeeds()
     {

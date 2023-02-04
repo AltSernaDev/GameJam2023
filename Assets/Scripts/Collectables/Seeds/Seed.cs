@@ -20,6 +20,7 @@ public class Seed : Collectable
         tree
     }
 
+    [SerializeField]
     private GrowthStatus status;
 
     public GrowthStatus Status { get => status; set => status = value; }
@@ -38,13 +39,16 @@ public class Seed : Collectable
 
     private void Update()
     {
-        if(status == GrowthStatus.planted)
+        if (status == GrowthStatus.planted)
         {
             growthTimer -= 1 * Time.deltaTime;
         }
 
-        if(growthTimer <= 0 && status == GrowthStatus.planted)
+        if (growthTimer <= 0 && status == GrowthStatus.planted)
         {
+            rigidbody.isKinematic = true;
+            rigidbody.Sleep();
+            GetComponent<Collider>().enabled = false;
             status = GrowthStatus.tree;
             growthTimer = initialGrowthTime;
             BecomeTree();
@@ -60,7 +64,7 @@ public class Seed : Collectable
         //Do Something
     }
 
-    IEnumerator Die(float fxTime)
+    public IEnumerator DestroyFX(float fxTime)
     {
         //do Something        
         yield return new WaitForSeconds(fxTime);
@@ -69,13 +73,21 @@ public class Seed : Collectable
 
     public virtual void Die()
     {
-        float animationTime = dieFX.main.duration;
+        if (Status == GrowthStatus.seed)
+        {
+            float animationTime = dieFX.main.duration;
 
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
-        StartCoroutine(Die(animationTime));
-        dieFX.Play();
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            StartCoroutine(DestroyFX(animationTime));
+            dieFX.Play();
+        }
     }
     public virtual void SpawnNewSeeds()
     {
+    }
+
+    protected virtual void OnCollisionEnter(Collision collision)
+    {
+        rigidbody.Sleep();
     }
 }
