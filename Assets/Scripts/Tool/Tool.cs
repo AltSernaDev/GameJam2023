@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class Tool : MonoBehaviour
 {
-    GameObject currentCollectable; //change to collectabale class --A--
+    
     Vector3 aimPoint;
     bool shooting;
     float shootTimer;
+    [SerializeField] InventoryManager inventory;
     [SerializeField] Transform canyon, hook;
     [SerializeField] float fireRate, bulletSpeed, hookSpeed;
-
 
     private void Update()
     {
@@ -34,9 +34,10 @@ public class Tool : MonoBehaviour
         {
             aimPoint = aimPoint.normalized;
 
-            currentCollectable = GameObject.CreatePrimitive(PrimitiveType.Sphere);//Instantiate(bullet);
+            var currentCollectable = inventory.RemoveItem();//cambiar 
             currentCollectable.transform.position = canyon.position;
-            currentCollectable.AddComponent<Rigidbody>(); //temp
+            
+            currentCollectable.gameObject.AddComponent<Rigidbody>(); //temp
 
             currentCollectable.GetComponent<Rigidbody>().AddForce(aimPoint.normalized * bulletSpeed, ForceMode.VelocityChange);
 

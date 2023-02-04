@@ -34,8 +34,5 @@ public class Testing : MonoBehaviour
 
 
     }
-    void TestRemove()
-    {
-        retuned = inventory.RemoveItem(0);
-    }
+
 }
