@@ -1,0 +1,32 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+
+public class Testing : MonoBehaviour
+{
+    public InventoryManager inventory;
+    public Slot test1;
+    public Collectable a;
+    public Collectable b;
+
+
+    private void Start()
+    {
+        inventory.AddToInventory(a);
+        inventory.AddToInventory(a);
+        inventory.AddToInventory(a);
+        inventory.AddToInventory(a);
+        inventory.AddToInventory(b);
+        inventory.AddToInventory(b);
+        inventory.AddToInventory(a);
+        inventory.AddToInventory(a);
+        inventory.AddToInventory(a);
+        inventory.AddToInventory(a);
+        inventory.AddToInventory(a);
+
+        Debug.Log(inventory.invetoryItems[0]);
+
+    }
+}
