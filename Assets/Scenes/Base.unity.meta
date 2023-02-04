@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Base.unity.meta
 guid: c2558b32325a60a41b341e40f10b4e41
+========
+guid: cdd31d9747c6ba2539056675bbcaf3a5
+>>>>>>>> origin/feature/inventory:Assets/Scenes/Inventory.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
