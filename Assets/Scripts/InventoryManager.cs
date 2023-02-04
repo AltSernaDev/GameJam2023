@@ -37,5 +37,11 @@ public class InventoryManager : MonoBehaviour
         }
 
     }
-    public void RemoveItem
+
+    public Collectable RemoveItem(int slot)
+    {
+        if(invetoryItems[slot].canRemove())return invetoryItems[slot].RemoveItem();
+        return null;
+
+    }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class Slot : MonoBehaviour
@@ -15,8 +16,14 @@ public class Slot : MonoBehaviour
 
     public bool CanEnqueue()
     {
-        if (items.Count < 4) return true;
-        else return false;
+        if (items.Count < maxStorage) return true;
+        return false;
+    }
+
+    public bool canRemove()
+    {
+        if (items.Count > 0) return true;
+        return false;
     }
 
     public TypeItem CheckTypeItem()

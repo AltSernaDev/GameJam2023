@@ -10,6 +10,7 @@ public class Testing : MonoBehaviour
     public Slot test1;
     public Collectable a;
     public Collectable b;
+    public Collectable retuned;
 
 
     private void Start()
@@ -25,8 +26,16 @@ public class Testing : MonoBehaviour
         inventory.AddToInventory(a);
         inventory.AddToInventory(a);
         inventory.AddToInventory(a);
+        Invoke("TestRemove",10.0f);
 
-        Debug.Log(inventory.invetoryItems[0]);
+        Debug.Log(inventory.invetoryItems[0]); 
+        
+        
 
+
+    }
+    void TestRemove()
+    {
+        retuned = inventory.RemoveItem(0);
     }
 }
