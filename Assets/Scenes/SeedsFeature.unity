@@ -152,9 +152,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49de822077e26c745a557b93cd18817e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthTime: 0
+  growthTimer: 0
+  mayorSpawnPercentage: 0
+  deathTimer: 0
   status: 0
-  seedType: 1
+  m_growthTimer: 0
+  m_mayorSpawnPercentage: 0
+  m_deathTimer: 0
+  seedType: 2
 --- !u!4 &73274433
 Transform:
   m_ObjectHideFlags: 0
@@ -355,9 +360,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 449357054}
-        m_TargetAssemblyTypeName: CombinationBehav, Assembly-CSharp
-        m_MethodName: CombineSeeds
+      - m_Target: {fileID: 1858321143}
+        m_TargetAssemblyTypeName: Seed, Assembly-CSharp
+        m_MethodName: ToPlant
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -552,9 +557,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49de822077e26c745a557b93cd18817e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthTime: 0
+  growthTimer: 0
+  mayorSpawnPercentage: 0
+  deathTimer: 0
   status: 0
-  seedType: 0
+  m_growthTimer: 0
+  m_mayorSpawnPercentage: 0
+  m_deathTimer: 0
+  seedType: 1
 --- !u!4 &367865744
 Transform:
   m_ObjectHideFlags: 0
@@ -718,6 +728,7 @@ MonoBehaviour:
   - {fileID: 1858321143}
   - {fileID: 367865743}
   seedSpawnPoint: {fileID: 0}
+  resultType: 0
 --- !u!4 &449357055
 Transform:
   m_ObjectHideFlags: 0
@@ -762,9 +773,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49de822077e26c745a557b93cd18817e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthTime: 0
+  growthTimer: 0
+  mayorSpawnPercentage: 0
+  deathTimer: 0
   status: 0
-  seedType: 1
+  m_growthTimer: 0
+  m_mayorSpawnPercentage: 0
+  m_deathTimer: 0
+  seedType: 2
 --- !u!4 &816157232
 Transform:
   m_ObjectHideFlags: 0
@@ -809,9 +825,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49de822077e26c745a557b93cd18817e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthTime: 0
+  growthTimer: 0
+  mayorSpawnPercentage: 0
+  deathTimer: 0
   status: 0
-  seedType: 1
+  m_growthTimer: 0
+  m_mayorSpawnPercentage: 0
+  m_deathTimer: 0
+  seedType: 5
 --- !u!4 &977392085
 Transform:
   m_ObjectHideFlags: 0
@@ -856,9 +877,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49de822077e26c745a557b93cd18817e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthTime: 0
+  growthTimer: 5
+  mayorSpawnPercentage: 0.6
+  deathTimer: 3
   status: 0
-  seedType: 0
+  m_growthTimer: 0
+  m_mayorSpawnPercentage: 0
+  m_deathTimer: 0
+  seedType: 1
 --- !u!4 &1858321144
 Transform:
   m_ObjectHideFlags: 0
@@ -903,9 +929,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49de822077e26c745a557b93cd18817e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthTime: 0
+  growthTimer: 0
+  mayorSpawnPercentage: 0
+  deathTimer: 0
   status: 0
-  seedType: 1
+  m_growthTimer: 0
+  m_mayorSpawnPercentage: 0
+  m_deathTimer: 0
+  seedType: 5
 --- !u!4 &1938847737
 Transform:
   m_ObjectHideFlags: 0
@@ -950,9 +981,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49de822077e26c745a557b93cd18817e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthTime: 0
+  growthTimer: 0
+  mayorSpawnPercentage: 0
+  deathTimer: 0
   status: 0
-  seedType: 1
+  m_growthTimer: 0
+  m_mayorSpawnPercentage: 0
+  m_deathTimer: 0
+  seedType: 3
 --- !u!4 &1954671257
 Transform:
   m_ObjectHideFlags: 0
@@ -997,9 +1033,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49de822077e26c745a557b93cd18817e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthTime: 0
+  growthTimer: 0
+  mayorSpawnPercentage: 0
+  deathTimer: 0
   status: 0
-  seedType: 1
+  m_growthTimer: 0
+  m_mayorSpawnPercentage: 0
+  m_deathTimer: 0
+  seedType: 3
 --- !u!4 &2010793700
 Transform:
   m_ObjectHideFlags: 0
