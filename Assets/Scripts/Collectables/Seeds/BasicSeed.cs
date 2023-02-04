@@ -5,13 +5,6 @@ using UnityEngine;
 
 public class BasicSeed : Seed
 {
-    [SerializeField] float m_growthTimer;
-    float m_initialGrowthTime;
-    [SerializeField] float m_mayorSpawnPercentage;
-    [SerializeField] float m_deathTimer;
-
-    Action onDeath;
-
     public enum SeedType : int
     {
         A = 1,
@@ -21,12 +14,12 @@ public class BasicSeed : Seed
     }
     public SeedType seedType;
 
-    private void Start()
+    private void OnEnable()
     {
-        status = GrowthStatus.seed;
-        m_initialGrowthTime = m_growthTimer;
+        Status = GrowthStatus.seed;
+        InitialGrowthTime = GrowthTimer;
 
-        onDeath += Die;
+        OnDeath += Die;
     }
 
     public override void SpawnNewSeeds()
@@ -34,7 +27,7 @@ public class BasicSeed : Seed
         float spawnIndex = 0;
         spawnIndex = UnityEngine.Random.Range(0f, 1f);
 
-        if (spawnIndex <= m_mayorSpawnPercentage)
+        if (spawnIndex <= MayorSpawnPercentage)
         {
             for (int i = 0; i < 2; i++)
             {
@@ -44,7 +37,6 @@ public class BasicSeed : Seed
                 seed = this;
 
                 Instantiate(newSeed, transform);
-                print("a");
             }
         }
         else
@@ -57,10 +49,9 @@ public class BasicSeed : Seed
                 seed = this;
 
                 Instantiate(newSeed, transform);
-                print("b");
             }
         }
 
-        onDeath();
+        OnDeath();
     }
 }

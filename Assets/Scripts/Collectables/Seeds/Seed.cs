@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class Seed : Collectable
 {
+    public Rigidbody rigidbody;
     [SerializeField] float growthTimer;
     float initialGrowthTime;
     [SerializeField] float mayorSpawnPercentage;
+
+    public ParticleSystem dieFX;
 
     Action onDeath;
     public enum GrowthStatus
@@ -17,9 +20,13 @@ public class Seed : Collectable
         tree
     }
 
-    public GrowthStatus status;
+    private GrowthStatus status;
 
-    public float GrowthTime { get => growthTimer; }
+    public GrowthStatus Status { get => status; set => status = value; }
+    public float GrowthTimer { get => growthTimer; set => growthTimer = value; }
+    public float InitialGrowthTime { get => initialGrowthTime; set => initialGrowthTime = value; }
+    public float MayorSpawnPercentage { get => mayorSpawnPercentage; set => mayorSpawnPercentage = value; }
+    public Action OnDeath { get => onDeath; set => onDeath = value; }
 
     private void Start()
     {
@@ -52,9 +59,21 @@ public class Seed : Collectable
     {
         //Do Something
     }
+
+    IEnumerator Die(float fxTime)
+    {
+        //do Something        
+        yield return new WaitForSeconds(fxTime);
+        //Destroy(gameObject);
+    }
+
     public virtual void Die()
     {
-        Destroy(gameObject);
+        float animationTime = dieFX.main.duration;
+
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        StartCoroutine(Die(animationTime));
+        dieFX.Play();
     }
     public virtual void SpawnNewSeeds()
     {
