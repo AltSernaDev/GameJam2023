@@ -5,12 +5,14 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 public class InventoryManager : MonoBehaviour
 {
 
     [SerializeField] public Slot[] invetoryItems ;
+    [SerializeField] public UnityAction<int> onAddItem;
 
 
 
@@ -22,6 +24,7 @@ public class InventoryManager : MonoBehaviour
             {
                 invetoryItems[i].AddItem(item);
                 Debug.Log(invetoryItems[i].itemsCount);
+                onAddItem?.Invoke(i);
                 return;
             }
 
