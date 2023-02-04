@@ -14,7 +14,7 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] private int slotSlectedt = 0;
 
-    public Slot[] invetoryItems ;
+    public Slot[] invetoryItems;
     public UnityAction<int> onAddItem;
 
     public int SlotSlectedt
@@ -27,12 +27,12 @@ public class InventoryManager : MonoBehaviour
                 slotSlectedt = invetoryItems.Length;
                 return;
 
-            } 
+            }
             if (value < 0)
             {
                 slotSlectedt = 0;
                 return;
-               
+
             }
             slotSlectedt = value;
             return;
@@ -73,8 +73,13 @@ public class InventoryManager : MonoBehaviour
 
     public Collectable RemoveItem()
     {
-        if(invetoryItems[SlotSlectedt].canRemove())return invetoryItems[SlotSlectedt].RemoveItem();
-        return null;
-
+        if (invetoryItems[SlotSlectedt].canRemove())
+        {
+            return invetoryItems[SlotSlectedt].RemoveItem();
+        }
+        else
+        {
+            return null;
+        }
     }
 }

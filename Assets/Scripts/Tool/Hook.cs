@@ -21,7 +21,9 @@ public class Hook : MonoBehaviour
         lineRenderer.SetPosition(1, transform.position);
 
         if (canyon.position == transform.position && target != null)
+        {
             StartCoroutine(Drop());
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -30,7 +32,7 @@ public class Hook : MonoBehaviour
         StartCoroutine(Comeback(0f));
 
         if (collision.gameObject.layer == 7)
-        {            
+        {
             target = collision.gameObject;
             Destroy(target.GetComponent<Rigidbody>());
             target.transform.parent = transform;

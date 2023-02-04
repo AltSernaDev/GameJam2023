@@ -35,11 +35,15 @@ public class Tool : MonoBehaviour
             aimPoint = aimPoint.normalized;
 
             var currentCollectable = inventory.RemoveItem();//cambiar 
-            currentCollectable.transform.position = canyon.position;
-            
-            currentCollectable.gameObject.AddComponent<Rigidbody>(); //temp
 
-            currentCollectable.GetComponent<Rigidbody>().AddForce(aimPoint.normalized * bulletSpeed, ForceMode.VelocityChange);
+            if (currentCollectable != null)
+            {
+                currentCollectable.transform.position = canyon.position;
+
+                currentCollectable.gameObject.AddComponent<Rigidbody>(); //temp
+
+                currentCollectable.GetComponent<Rigidbody>().AddForce(aimPoint.normalized * bulletSpeed, ForceMode.VelocityChange); 
+            }
 
             shooting = true;
         }
