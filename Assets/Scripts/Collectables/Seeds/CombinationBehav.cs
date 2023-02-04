@@ -10,7 +10,7 @@ public class CombinationBehav : MonoBehaviour
 
     public void CombineSeeds()
     {
-        if (combinableSeeds[0].status == Seed.GrowthStatus.seed && combinableSeeds[1].status == Seed.GrowthStatus.seed)
+        if (combinableSeeds[0].Status == Seed.GrowthStatus.seed && combinableSeeds[1].Status == Seed.GrowthStatus.seed)
         {
             AddSeeds(combinableSeeds[0], combinableSeeds[1]);
         }
@@ -96,8 +96,6 @@ public class CombinationBehav : MonoBehaviour
                     Instantiate(resultSeed, seedSpawnPoint.transform);
                     break;
             }
-            
-
         }
     }
 }
