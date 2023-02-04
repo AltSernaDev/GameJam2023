@@ -23,10 +23,11 @@ public class Hook : MonoBehaviour
         if (canyon.position == transform.position && target != null)
             StartCoroutine(Drop());
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         gameObject.GetComponent<Rigidbody>().Sleep();
-        StartCoroutine(Comeback());
+        StartCoroutine(Comeback(0f));
 
         if (collision.gameObject.layer == 7)
         {            
@@ -42,22 +43,24 @@ public class Hook : MonoBehaviour
         target.AddComponent<Rigidbody>();
         target.transform.parent = null;
         target = null;
+
         transform.localPosition = Vector3.zero;
         gameObject.SetActive(false);
     }
-    IEnumerator Comeback()
+    IEnumerator Comeback(float time)
     {
+        yield return new WaitForSeconds(time);
+
         gameObject.GetComponent<Rigidbody>().Sleep();
+
         while (transform.position != canyon.position)
         {
             transform.position = Vector3.MoveTowards(transform.position, canyon.position, 20 * Time.deltaTime);
             yield return null;
         }
     }
-    public IEnumerator Return(float time)
+    public void Return(float time)
     {
-        yield return new WaitForSeconds(time);
-        StartCoroutine(Comeback());
+        StartCoroutine(Comeback(time));
     }
-
 }

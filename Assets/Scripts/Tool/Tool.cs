@@ -16,25 +16,28 @@ public class Tool : MonoBehaviour
     private void Update()
     {
         aimPoint = AimPoint.instance.aimPoint - canyon.position;
-
+        ActionTool();
+    }
+    void ActionTool()
+    {
         if (shooting)
             FireRate();
         else
-            Action();
-    }
-    void Action()
-    {
-        Pull();
-        Shoot();
+        {
+            Pull();
+            Shoot();
+        }
     }
     void Shoot()
     {
         if (Input.GetButtonDown("Fire1"))
         {
             aimPoint = aimPoint.normalized;
+
             currentCollectable = GameObject.CreatePrimitive(PrimitiveType.Sphere);//Instantiate(bullet);
             currentCollectable.transform.position = canyon.position;
             currentCollectable.AddComponent<Rigidbody>(); //temp
+
             currentCollectable.GetComponent<Rigidbody>().AddForce(aimPoint.normalized * bulletSpeed, ForceMode.VelocityChange);
 
             shooting = true;
@@ -45,11 +48,13 @@ public class Tool : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2"))
         {
-            hook.gameObject.SetActive(true);
             aimPoint = aimPoint.normalized;
+
+            hook.gameObject.SetActive(true);            
             hook.transform.position = canyon.position;
-            StartCoroutine(hook.gameObject.GetComponent<Hook>().Return(1f));
+            hook.gameObject.GetComponent<Hook>().Return(0.5f);
             hook.GetComponent<Rigidbody>().Sleep();
+
             hook.GetComponent<Rigidbody>().AddForce(aimPoint.normalized * hookSpeed, ForceMode.VelocityChange);
 
             shooting = true;
