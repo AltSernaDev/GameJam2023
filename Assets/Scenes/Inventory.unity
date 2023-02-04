@@ -620,12 +620,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 3712504cd284f6cec896e2a014161e6a, type: 3}
+  rigidbody: {fileID: 0}
   growthTimer: 0
   mayorSpawnPercentage: 0
+  dieFX: {fileID: 0}
   status: 0
-  m_growthTimer: 0
-  m_mayorSpawnPercentage: 0
-  m_deathTimer: 0
   seedType: 0
 --- !u!4 &1132371138
 Transform:
@@ -1150,12 +1149,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 74818bb0deb5d92c7b32ab732ea74bf0, type: 3}
+  rigidbody: {fileID: 0}
   growthTimer: 0
   mayorSpawnPercentage: 0
+  dieFX: {fileID: 0}
   status: 0
-  m_growthTimer: 0
-  m_mayorSpawnPercentage: 0
-  m_deathTimer: 0
   seedType: 0
 --- !u!4 &2029114937
 Transform:
