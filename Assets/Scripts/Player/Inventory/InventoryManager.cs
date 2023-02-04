@@ -16,6 +16,7 @@ public class InventoryManager : MonoBehaviour
 
     public Slot[] invetoryItems;
     public UnityAction<int> onAddItem;
+    public UnityAction<int> onSlotEmpty;
 
     public int SlotSlectedt
     {
@@ -75,7 +76,9 @@ public class InventoryManager : MonoBehaviour
     {
         if (invetoryItems[SlotSlectedt].canRemove())
         {
-            return invetoryItems[SlotSlectedt].RemoveItem();
+            var temp= invetoryItems[SlotSlectedt].RemoveItem();
+            if(invetoryItems[SlotSlectedt].items.Count <= 0) onSlotEmpty?.Invoke(SlotSlectedt);
+            return temp;
         }
         else
         {

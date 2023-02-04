@@ -516,6 +516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7115bfa10f82252c383aa171b197e8cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotSlectedt: 0
   invetoryItems:
   - {fileID: 1090639555}
   - {fileID: 367841727}
@@ -762,6 +763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34c67f3e539a551fa958f26b8bf341f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emptySlot: {fileID: 21300000, guid: 1513ecbd5df7a3d7aad08f9fa9f8cab0, type: 3}
   inventoryManager: {fileID: 836089039}
   slotUI:
   - {fileID: 182389026}
