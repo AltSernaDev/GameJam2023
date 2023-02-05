@@ -23,6 +23,7 @@ public class Hook : MonoBehaviour
 
         if (canyon.position == transform.position && target != null && hasTarget)
         {
+            gameObject.GetComponent<Rigidbody>().Sleep();
             StartCoroutine(Drop());
             hasTarget = false;
         }
