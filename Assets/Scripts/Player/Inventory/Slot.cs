@@ -35,6 +35,7 @@ public class Slot : MonoBehaviour
     {
         items.Add(item);
         itemsCount = items.Count;
+        InventoryManager.onItemCounted();
     }
 
     public Collectable RemoveItem()
@@ -42,6 +43,7 @@ public class Slot : MonoBehaviour
         var colleted = items[0];
         items.Remove(items[0]);
         itemsCount = items.Count;
+        InventoryManager.onItemCounted();
         return colleted;
     }
 

@@ -14,15 +14,21 @@ public class UIInventory : MonoBehaviour
     private void Start()
     {
         SlotSlected(inventoryManager.SlotSlectedt);
+        slotUI[0].GetComponentInChildren<Text>().text = inventoryManager.ChangeNumber(0).ToString();
+
     }
 
+    private void Update()
+    {
+        UpdateStack();
+    }
 
     private void OnEnable()
     {
         inventoryManager.onAddItem += SetIcon;
         inventoryManager.onSlotEmpty += SetDefaultIcon;
         inventoryManager.onSlotSelectedChanged += SlotSlected;
-        inventoryManager.onItemCounted += UpdateStack;
+        InventoryManager.onItemCounted += UpdateStack;
     }
 
     private void OnDisable()
@@ -30,7 +36,7 @@ public class UIInventory : MonoBehaviour
         inventoryManager.onAddItem -= SetIcon;
         inventoryManager.onSlotEmpty -= SetDefaultIcon;
         inventoryManager.onSlotSelectedChanged -= SlotSlected;
-        inventoryManager.onItemCounted -= UpdateStack;
+        InventoryManager.onItemCounted -= UpdateStack;
         
     }
 
@@ -53,9 +59,9 @@ public class UIInventory : MonoBehaviour
         slotUI[index].GetComponent<Image>().color = Color.gray;
     }
 
-    private void UpdateStack(int count)
+    private void UpdateStack()
     {
-        for (int i = 0; i < inventoryManager.invetoryItems.Length; i++)
+        for (int i = 0; i < slotUI.Length; i++)
         {
             slotUI[i].GetComponentInChildren<Text>().text = inventoryManager.ChangeNumber(i).ToString();
         }

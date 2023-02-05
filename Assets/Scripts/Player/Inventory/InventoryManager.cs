@@ -18,7 +18,7 @@ public class InventoryManager : MonoBehaviour
     public UnityAction<int> onAddItem;
     public UnityAction<int> onSlotEmpty;
     public UnityAction<int> onSlotSelectedChanged;
-    public UnityAction<int> onItemCounted;
+    public static UnityAction onItemCounted;
 
     public int SlotSlectedt
     {
@@ -71,6 +71,7 @@ public class InventoryManager : MonoBehaviour
                     return;
                 }
             }
+            
 
         }
 
@@ -88,6 +89,8 @@ public class InventoryManager : MonoBehaviour
         {
             return null;
         }
+        
+        
     }
 
     public int ChangeNumber(int pos)
