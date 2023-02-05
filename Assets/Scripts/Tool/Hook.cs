@@ -8,6 +8,7 @@ public class Hook : MonoBehaviour
     GameObject target;
     Transform canyon;
     LineRenderer lineRenderer;
+    bool hasTarget = false;
 
     void Start()
     {
@@ -20,35 +21,43 @@ public class Hook : MonoBehaviour
         lineRenderer.SetPosition(0, canyon.position);
         lineRenderer.SetPosition(1, transform.position);
 
-        if (canyon.position == transform.position && target != null)
+        if (canyon.position == transform.position && target != null && hasTarget)
         {
             StartCoroutine(Drop());
+            hasTarget = false;
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         gameObject.GetComponent<Rigidbody>().Sleep();
         StartCoroutine(Comeback(0f));
 
-        if (collision.gameObject.layer == 7)
+        if (other.gameObject.layer == 7)
         {
-            target = collision.gameObject;
+            target = other.gameObject;
             Destroy(target.GetComponent<Rigidbody>());
             target.transform.parent = transform;
+            hasTarget = true;
         }
     }
+
     IEnumerator Drop()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
 
-        target.AddComponent<Rigidbody>();
-        target.transform.parent = null;
+        transform.parent.gameObject.GetComponent<Tool>().SaveCollectable(target.GetComponent<Collectable>());
+        Destroy(target.gameObject);
         target = null;
+        TurnOff();
+    }
 
+    private void TurnOff()
+    {
         transform.localPosition = Vector3.zero;
         gameObject.SetActive(false);
     }
+
     IEnumerator Comeback(float time)
     {
         yield return new WaitForSeconds(time);
@@ -60,6 +69,9 @@ public class Hook : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, canyon.position, 20 * Time.deltaTime);
             yield return null;
         }
+        
+        yield return new WaitUntil(() => target == null);
+        TurnOff();
     }
     public void Return(float time)
     {

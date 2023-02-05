@@ -40,7 +40,7 @@ public class Tool : MonoBehaviour
             {
                 currentCollectable.transform.position = canyon.position;
 
-                currentCollectable.gameObject.AddComponent<Rigidbody>(); //temp
+                currentCollectable.GetComponent<Rigidbody>().Sleep();
 
                 currentCollectable.GetComponent<Rigidbody>().AddForce(aimPoint.normalized * bulletSpeed, ForceMode.VelocityChange); 
             }
@@ -74,6 +74,10 @@ public class Tool : MonoBehaviour
         }
         else
             shootTimer += Time.deltaTime;
+    }
+    public void SaveCollectable(Collectable collectable)
+    {
+        inventory.AddToInventory(collectable);
     }
 }
 

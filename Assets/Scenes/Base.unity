@@ -902,10 +902,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 196578726, guid: ed5d3e35ee4b5ba49b5a0cf1eddfdc64, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1169928093, guid: ed5d3e35ee4b5ba49b5a0cf1eddfdc64, type: 3}
+      propertyPath: fireRate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1169928093, guid: ed5d3e35ee4b5ba49b5a0cf1eddfdc64, type: 3}
       propertyPath: inventory
       value: 
       objectReference: {fileID: 969688259}
+    - target: {fileID: 1811929485, guid: ed5d3e35ee4b5ba49b5a0cf1eddfdc64, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1232706116024293768, guid: ed5d3e35ee4b5ba49b5a0cf1eddfdc64,
         type: 3}
       propertyPath: m_RootOrder

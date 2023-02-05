@@ -23,19 +23,11 @@ public class InventoryManager : MonoBehaviour
         get { return slotSlectedt; }
         set
         {
-            if (value > invetoryItems.Length)
-            {
-                slotSlectedt = invetoryItems.Length;
-                return;
-
-            }
             if (value < 0)
-            {
-                slotSlectedt = 0;
-                return;
+                value = invetoryItems.Length - 1;
 
-            }
-            slotSlectedt = value;
+            slotSlectedt = value % invetoryItems.Length;
+            print(slotSlectedt);
             return;
         }
     }
