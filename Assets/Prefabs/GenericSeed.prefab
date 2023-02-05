@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 7952598290766224884}
   - component: {fileID: 5744416582113792098}
   - component: {fileID: 4497095356861128226}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GenericSeed
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,34 +109,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 3467265006976378402}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20f17d04d2a929b46b8e621cf3b730a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 561109046102b06439c437925eae72a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  icon: {fileID: 0}
-  plantGeneric: {fileID: 4044069819042470628, guid: 5fd655a3e224c574eac45c73b61b9635, type: 3}
+  iconArray:
+  - {fileID: 21300000, guid: 847bc0c2f69ca43bb94c8cf281eb45fd, type: 3}
+  - {fileID: 21300000, guid: d44eba696464f4378aebcca175762106, type: 3}
+  - {fileID: 21300000, guid: 49e6259ae807620ac95a66fd8794dbc2, type: 3}
+  - {fileID: 21300000, guid: 5b4a1a61fe40095848f143f631d6409a, type: 3}
+  - {fileID: 21300000, guid: d5048ebb0f44d30549f4b1827775375a, type: 3}
+  - {fileID: 21300000, guid: c1867977e06731793a8c9f9247b0a411, type: 3}
+  - {fileID: 21300000, guid: c21006c5494d0c6e7b04554152562ab2, type: 3}
+  - {fileID: 21300000, guid: 9c6515ddb68eef1d7aa91a63ca621f77, type: 3}
+  - {fileID: 21300000, guid: 581d1402658dad6088e049c30fb8ea2c, type: 3}
+  - {fileID: 21300000, guid: 9d7ad4cee6ac58c38b369f0acdd8eb61, type: 3}
+  iconSeed: {fileID: 0}
+  plantGeneric: {fileID: 4044069819042470628, guid: 7226459fa46206d4d85b64771fcdbc1f,
+    type: 3}
   skins:
-  - {fileID: 8228186557625453534, guid: f82ba030d0a73ca46ab346c714a7223b, type: 3}
-  - {fileID: 505873044829044788, guid: c4859dd0c9f343c45a52318d3e5b36a8, type: 3}
-  - {fileID: 8228186557625453534, guid: f82ba030d0a73ca46ab346c714a7223b, type: 3}
-  - {fileID: 505873044829044788, guid: c4859dd0c9f343c45a52318d3e5b36a8, type: 3}
-  - {fileID: 8228186557625453534, guid: f82ba030d0a73ca46ab346c714a7223b, type: 3}
-  - {fileID: 505873044829044788, guid: c4859dd0c9f343c45a52318d3e5b36a8, type: 3}
-  - {fileID: 8228186557625453534, guid: f82ba030d0a73ca46ab346c714a7223b, type: 3}
-  - {fileID: 505873044829044788, guid: c4859dd0c9f343c45a52318d3e5b36a8, type: 3}
-  - {fileID: 8228186557625453534, guid: f82ba030d0a73ca46ab346c714a7223b, type: 3}
-  - {fileID: 505873044829044788, guid: c4859dd0c9f343c45a52318d3e5b36a8, type: 3}
-  skinsLista:
-  - {fileID: 8228186557625453534, guid: f82ba030d0a73ca46ab346c714a7223b, type: 3}
-  - {fileID: 505873044829044788, guid: c4859dd0c9f343c45a52318d3e5b36a8, type: 3}
-  - {fileID: 8228186557625453534, guid: f82ba030d0a73ca46ab346c714a7223b, type: 3}
-  - {fileID: 505873044829044788, guid: c4859dd0c9f343c45a52318d3e5b36a8, type: 3}
-  - {fileID: 8228186557625453534, guid: f82ba030d0a73ca46ab346c714a7223b, type: 3}
-  - {fileID: 505873044829044788, guid: c4859dd0c9f343c45a52318d3e5b36a8, type: 3}
-  - {fileID: 8228186557625453534, guid: f82ba030d0a73ca46ab346c714a7223b, type: 3}
-  - {fileID: 505873044829044788, guid: c4859dd0c9f343c45a52318d3e5b36a8, type: 3}
-  - {fileID: 8228186557625453534, guid: f82ba030d0a73ca46ab346c714a7223b, type: 3}
-  - {fileID: 505873044829044788, guid: c4859dd0c9f343c45a52318d3e5b36a8, type: 3}
+  - {fileID: 1108794322340789419, guid: eb6e2a828caa2804d9147e943338a93a, type: 3}
+  - {fileID: 582582180980730209, guid: 082d1536d41e6be48bed45682d576121, type: 3}
+  - {fileID: 2154277979531539588, guid: 6964869f12886db4f9c7cb13a6f98a30, type: 3}
+  - {fileID: 5836520755714407662, guid: 8c801291b5ba4134880fd222b379d681, type: 3}
+  - {fileID: 582582180980730209, guid: d191c9f051b51f043b3820daa0a696f2, type: 3}
+  - {fileID: 2154277979531539588, guid: fad086dedf36c054f85e2a021b175830, type: 3}
+  - {fileID: 2154277979531539588, guid: f56733eb48692da48a30a4d42f2ac284, type: 3}
+  - {fileID: 5836520755714407662, guid: 9397a6161ff742448afbcbb0bd2d34dd, type: 3}
+  - {fileID: 5836520755714407662, guid: 1777e596ba6470144a2f415def6100b3, type: 3}
+  - {fileID: 5836520755714407662, guid: 128cf0f4c3101004f885b0289e3fbf25, type: 3}
   childToSkin: {fileID: 661635882557876633}
   plantable: 0
   combinada: 0
@@ -166,7 +167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 661635882557876633}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: seedMeshRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

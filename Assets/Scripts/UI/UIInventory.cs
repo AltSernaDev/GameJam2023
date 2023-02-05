@@ -47,6 +47,7 @@ public class UIInventory : MonoBehaviour
 
     private void SetDefaultIcon(int index)
     {
+        slotUI[index].GetComponent<Image>().color = Color.grey;
         slotUI[index].GetComponent<Image>().sprite = emptySlot;
     }
 
