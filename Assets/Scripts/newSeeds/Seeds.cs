@@ -6,20 +6,16 @@ public class Seeds : MonoBehaviour
 {
     int health = 100;
     public Rigidbody rb;
-    //[SerializeField] SkinnedMeshRenderer modelo;
-    public Sprite icon;
+    [SerializeField] Sprite[] iconArray;
+    public Sprite iconSeed;
     [SerializeField] GameObject plantGeneric;
-    int thisSeedSkin;
-    [SerializeField] GameObject[] skins;
+    int thisSeedSkin=0;
+    [SerializeField] GameObject[] skins=new GameObject[10];
     [SerializeField] Transform childToSkin;
     GameObject plantSeed;
 
     public bool plantable, combinada;
-    float growthTime;
-    [ Range(2, 4)] int dropCount;
-    [Range(0, 1)] float probabilidad;
-    int growthStage;
-    float stageOfGrowingTime;
+
 
     public enum TipoSeed
     {
@@ -31,132 +27,86 @@ public class Seeds : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-
         switch (tipo)
         {
             case TipoSeed.a:
+                iconSeed = iconArray[(int)tipo];
                 thisSeedSkin = 0;
-                probabilidad = 0.65f;
                 combinada = false;
-                dropCount = 2; // +1 si probabilidad contraria
-                growthTime = 45;
-                stageOfGrowingTime = growthTime / 4;
-                growthStage= 0;
                 plantable = true;
                 break;
             case TipoSeed.b:
+                iconSeed = iconArray[(int)tipo];
                 thisSeedSkin =1;
-                probabilidad = 0.70f;
                 combinada = false;
-                dropCount = 2;  // +1 si probabilidad contraria
-                growthTime = 70;
-                stageOfGrowingTime = growthTime / 4;
-                growthStage = 0;
                 plantable = true;
 
                 break;
             case TipoSeed.c:
+                iconSeed = iconArray[(int)tipo];
                 thisSeedSkin = 2;
-                probabilidad = 0.85f;
                 combinada = false;
-                dropCount = 2;  // +1 si probabilidad contraria
-                growthTime = 100;
-                stageOfGrowingTime = growthTime / 4;
-                growthStage = 0;
                 plantable = true;
 
                 break;
             case TipoSeed.d:
+                iconSeed = iconArray[(int)tipo];
                 thisSeedSkin = 3;
-                probabilidad = 0.95f;
                 combinada = false;
-                dropCount = 2;  // +1 si probabilidad contraria
-                growthTime = 200;
-                stageOfGrowingTime = growthTime / 4;
-                growthStage = 0;
                 plantable = true;
 
                 // ==================== Seeds Mezcladas ====================
 
                 break;
             case TipoSeed.ab:
+                iconSeed = iconArray[(int)tipo];
                 thisSeedSkin = 4;
-                probabilidad = 0.60f;
                 combinada = true;
-                dropCount = 3;  // +1 si probabilidad contraria
-                growthTime = 70;
-                stageOfGrowingTime = growthTime / 4;
-                growthStage = 0;
                 plantable = true;
 
                 break;
             case TipoSeed.bc:
+                iconSeed = iconArray[(int)tipo];
                 thisSeedSkin = 5;
-                probabilidad = 0.70f;
                 combinada = true;
-                dropCount = 2;  // +1 si probabilidad contraria
-                growthTime = 100;
-                stageOfGrowingTime = growthTime / 4;
-                growthStage = 0;
                 plantable = true;
 
                 break;
             case TipoSeed.ac:
+                iconSeed = iconArray[(int)tipo];
                 thisSeedSkin = 6;
-                probabilidad = 0.85f;
                 combinada = true;
-                dropCount = 2;  // +1 si probabilidad contraria
-                growthTime = 150;
-                stageOfGrowingTime = growthTime / 4;
-                growthStage = 0;
                 plantable = true;
 
                 // ==================== Seeds tipo D ====================
 
                 break;
             case TipoSeed.da:
+                iconSeed = iconArray[(int)tipo];
                 thisSeedSkin = 7;
-                probabilidad = 1;
                 combinada = true;
-                growthTime = 9999;
-                stageOfGrowingTime = growthTime / 4;
-                growthStage = 0;
                 plantable = false;
 
                 break;
             case TipoSeed.db:
+                iconSeed = iconArray[(int)tipo];
                 thisSeedSkin = 8;
-                probabilidad = 1;
                 combinada = true;
-                growthTime = 9999;
-                stageOfGrowingTime = growthTime / 4;
-                growthStage = 0;
                 plantable = false;
                 break;
             case TipoSeed.dc:
+                iconSeed = iconArray[(int)tipo];
                 thisSeedSkin = 9;
-                probabilidad = 1;
                 combinada = true;
-                growthTime = 9999;
-                stageOfGrowingTime = growthTime / 4;
-                growthStage = 0;
                 plantable = false;
                 break;
         }
 
-        print(thisSeedSkin);
-        print(skins[thisSeedSkin]);
-
-        Instantiate(skins[thisSeedSkin], childToSkin);
+ 
+        Instantiate(skins[(int)tipo], childToSkin);
     }
 
-    private void Update()
-    {
-        //lerp de los stages
-        //Contador time.deltatime
-    }
-
-    /*private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (plantable && other.CompareTag("plantZone"))
         {
@@ -166,15 +116,22 @@ public class Seeds : MonoBehaviour
                 plantZone plantZone=other.GetComponent<plantZone>();
                 if(!plantZone.zoneUsed)
                 {
+                    plantZone.zoneUsed = true;
                     plantSeed = Instantiate(plantGeneric, plantZone.seedPosition);
+                    plantSeed.GetComponent<PlantedSeeds>().planta = (PlantedSeeds.tipoPlant)tipo;
+                    plantSeed = null;
                     Destroy(gameObject);
                 }
             }
         }
-    }*/
+    }
 
     public void ReceiveDamage(int dmg)
     {
         health -= dmg;
+        if(health<=0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
