@@ -54,9 +54,10 @@ public class UIInventory : MonoBehaviour
     {
         foreach (var slot in slotUI)
         {
-            slot.GetComponent<Image>().color = Color.white;
+            slot.GetComponent<Image>().color = Color.grey;
+ 
         }
-        slotUI[index].GetComponent<Image>().color = Color.gray;
+        slotUI[index].GetComponent<Image>().color = Color.white;
     }
 
     private void UpdateStack()

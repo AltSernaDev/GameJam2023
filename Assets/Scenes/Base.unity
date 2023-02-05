@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -511,6 +511,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Seed B
       objectReference: {fileID: 0}
+    - target: {fileID: 2107526208693948753, guid: 082d1536d41e6be48bed45682d576121,
+        type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: d44eba696464f4378aebcca175762106,
+        type: 3}
     - target: {fileID: 4869122873341098321, guid: 082d1536d41e6be48bed45682d576121,
         type: 3}
       propertyPath: m_RootOrder
@@ -647,7 +653,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e1eedaa55ea4449deaa6312c4cdb8d43, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -769,7 +775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -810,7 +816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &246669449
 Transform:
   m_ObjectHideFlags: 0
@@ -923,7 +929,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e1eedaa55ea4449deaa6312c4cdb8d43, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1040,7 +1046,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e1eedaa55ea4449deaa6312c4cdb8d43, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1117,7 +1123,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e1eedaa55ea4449deaa6312c4cdb8d43, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1650,6 +1656,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Seed A (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1894302457119687835, guid: eb6e2a828caa2804d9147e943338a93a,
+        type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 847bc0c2f69ca43bb94c8cf281eb45fd,
+        type: 3}
     - target: {fileID: 4964124108246363291, guid: eb6e2a828caa2804d9147e943338a93a,
         type: 3}
       propertyPath: m_RootOrder
@@ -1965,6 +1977,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Seed A (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1894302457119687835, guid: eb6e2a828caa2804d9147e943338a93a,
+        type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 847bc0c2f69ca43bb94c8cf281eb45fd,
+        type: 3}
     - target: {fileID: 4964124108246363291, guid: eb6e2a828caa2804d9147e943338a93a,
         type: 3}
       propertyPath: m_RootOrder
@@ -2433,7 +2451,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e1eedaa55ea4449deaa6312c4cdb8d43, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2495,6 +2513,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Seed A (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1894302457119687835, guid: eb6e2a828caa2804d9147e943338a93a,
+        type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 847bc0c2f69ca43bb94c8cf281eb45fd,
+        type: 3}
     - target: {fileID: 4964124108246363291, guid: eb6e2a828caa2804d9147e943338a93a,
         type: 3}
       propertyPath: m_RootOrder
@@ -3026,6 +3050,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Seed A (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1894302457119687835, guid: eb6e2a828caa2804d9147e943338a93a,
+        type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 847bc0c2f69ca43bb94c8cf281eb45fd,
+        type: 3}
     - target: {fileID: 4964124108246363291, guid: eb6e2a828caa2804d9147e943338a93a,
         type: 3}
       propertyPath: m_RootOrder
@@ -3115,6 +3145,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Seed A
       objectReference: {fileID: 0}
+    - target: {fileID: 1894302457119687835, guid: eb6e2a828caa2804d9147e943338a93a,
+        type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 847bc0c2f69ca43bb94c8cf281eb45fd,
+        type: 3}
     - target: {fileID: 4964124108246363291, guid: eb6e2a828caa2804d9147e943338a93a,
         type: 3}
       propertyPath: m_RootOrder
@@ -3220,8 +3256,9 @@ MonoBehaviour:
   type: 0
   rigidbody: {fileID: 0}
   growthTimer: 0
+  deathTimer: 0
   mayorSpawnPercentage: 0
-  dieFX: {fileID: 0}
+  healthPoints: 0
   status: 0
   seedType: 0
   spawnPoints: []
