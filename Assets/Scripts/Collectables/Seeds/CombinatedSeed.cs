@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CombinatedSeed : Seed
 {
+    [SerializeField] float minSpawnValue, maxSpawnValue;
     public enum SeedType : int
     {
         AB = 1,
@@ -58,29 +59,36 @@ public class CombinatedSeed : Seed
 
     public override void SpawnNewSeeds()
     {
-        GameObject newSeed = new GameObject("Seed");
-        newSeed.AddComponent<CombinatedSeed>();
-        CombinatedSeed seed = newSeed.GetComponent<CombinatedSeed>();
-        seed = this;
-
-        float spawnIndex = 0;
-        spawnIndex = UnityEngine.Random.Range(0f, 1f);
-
-        if (spawnIndex < MayorSpawnPercentage)
+        if (seedType == SeedType.DA || seedType == SeedType.DB || seedType == SeedType.DC)
         {
-            for (int i = 0; i < 2; i++)
-            {
-                Instantiate(newSeed, transform);
-            }
+            print("Seed can't be planted");
         }
         else
         {
-            for (int i = 0; i < 3; i++)
-            {
-                Instantiate(newSeed, transform);
-            }
-        }
+            GameObject newSeed = new GameObject("Seed");
+            newSeed.AddComponent<CombinatedSeed>();
+            CombinatedSeed seed = newSeed.GetComponent<CombinatedSeed>();
+            seed = this;
 
-        OnDeath();
+            float spawnIndex = 0;
+            spawnIndex = UnityEngine.Random.Range(0f, 1f);
+
+            if (spawnIndex < MayorSpawnPercentage)
+            {
+                for (int i = 0; i < minSpawnValue; i++)
+                {
+                    Instantiate(newSeed, transform);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < maxSpawnValue; i++)
+                {
+                    Instantiate(newSeed, transform);
+                }
+            }
+
+            OnDeath();
+        }
     }
 }
