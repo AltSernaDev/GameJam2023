@@ -99,11 +99,12 @@ public class Hook : MonoBehaviour
         {           
             target.transform.parent = null;
             target.GetComponent<Rigidbody>().Sleep();
-            transform.parent.parent.gameObject.GetComponent<Tool>().SaveCollectable(target.GetComponent<Collectable>()); // refactory collectable
+            transform.parent.parent.gameObject.GetComponent<Tool>().SaveCollectable(target.GetComponent<Seeds>()); // refactory collectable
             done = true;
         }
         else
             done = true;
+        transform.parent.parent.gameObject.GetComponent<Tool>().open = false;
         return done;
     }
     void DestroyTarget()

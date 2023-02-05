@@ -8,20 +8,66 @@ public class Tool : MonoBehaviour
     
     Vector3 aimPoint;
     bool shooting;
-    float shootTimer;
-    Collectable currentCollectable;
+    public bool open, suck;
+    float shootTimer, openTimer, suckTimer;
+    Seeds currentCollectable;
     GameObject hookInstance;
+    SkinnedMeshRenderer skinnedMeshRenderer;
 
     [SerializeField] InventoryManager inventory;
     [SerializeField] Transform canyon; 
     [SerializeField] GameObject hook;
     [SerializeField] float fireRate, bulletSpeed, hookSpeed;
 
+    private void Start()
+    {
+        skinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
+    }
     private void Update()
     {
         aimPoint = AimPoint.instance.aimPoint - canyon.position;
         ActionTool();
+        AnimationKeys();
     }
+
+    private void AnimationKeys()
+    {
+        if (open)
+        {
+            if (openTimer < 100)
+                openTimer += Time.deltaTime * 500;
+            else
+                openTimer = 100;
+        }
+        else
+        {
+            if (openTimer > 0)
+                openTimer -= Time.deltaTime * 500;
+            else
+                openTimer = 0;
+        }
+        if (suck)
+        {
+            if (suckTimer < 100)
+                suckTimer += Time.deltaTime * 500;
+            else
+            {
+                suckTimer = 100;
+                suck = false;
+            }
+        }
+        else
+        {
+            if (suckTimer > 0)
+                suckTimer -= Time.deltaTime * 500;
+            else
+                suckTimer = 0;
+        }
+
+        skinnedMeshRenderer.SetBlendShapeWeight(0, openTimer);
+        skinnedMeshRenderer.SetBlendShapeWeight(1, suckTimer);
+    }
+
     void ActionTool()
     {
         if (shooting)
@@ -42,15 +88,16 @@ public class Tool : MonoBehaviour
 
             if (currentCollectable != null)
             {
+                suck = true;
                 currentCollectable.gameObject.SetActive(true);
                 currentCollectable.transform.parent = null;
                 currentCollectable.transform.position = canyon.position;
                 currentCollectable.GetComponent<Rigidbody>().Sleep();
 
-                currentCollectable.GetComponent<Rigidbody>().AddForce(aimPoint.normalized * bulletSpeed, ForceMode.VelocityChange); 
-            }
+                currentCollectable.GetComponent<Rigidbody>().AddForce(aimPoint.normalized * bulletSpeed, ForceMode.VelocityChange);
 
-            shooting = true;
+                shooting = true;
+            }
         }
     }
 
@@ -59,6 +106,7 @@ public class Tool : MonoBehaviour
         if (Input.GetButtonDown("Fire2"))
         {
             aimPoint = aimPoint.normalized;
+            open = true;
 
             hookInstance = GameObject.Instantiate(hook, canyon);    
 
@@ -75,7 +123,7 @@ public class Tool : MonoBehaviour
         else
             shootTimer += Time.deltaTime;
     }
-    public void SaveCollectable(Collectable collectable)
+    public void SaveCollectable(Seeds collectable)
     {
         inventory.AddToInventory(collectable);
     }
