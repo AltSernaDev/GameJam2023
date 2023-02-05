@@ -46,9 +46,11 @@ public class Seed : Collectable
 
         if (growthTimer <= 0 && status == GrowthStatus.planted)
         {
-            rigidbody.isKinematic = true;
+            rigidbody.useGravity = false;
             rigidbody.Sleep();
+
             GetComponent<Collider>().enabled = false;
+
             status = GrowthStatus.tree;
             growthTimer = initialGrowthTime;
             BecomeTree();
@@ -61,7 +63,7 @@ public class Seed : Collectable
     }
     public void BecomeTree()
     {
-        //Do Something
+        SpawnNewSeeds();
     }
 
     public IEnumerator DestroyFX(float fxTime)
@@ -81,6 +83,7 @@ public class Seed : Collectable
             StartCoroutine(DestroyFX(animationTime));
             dieFX.Play();
         }
+        else Destroy(gameObject);
     }
     public virtual void SpawnNewSeeds()
     {

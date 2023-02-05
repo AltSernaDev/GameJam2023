@@ -14,6 +14,7 @@ public class BasicSeed : Seed
     }
 
     public SeedType seedType;
+    [SerializeField] Transform[] spawnPoints;
 
     private void OnEnable()
     {
@@ -25,31 +26,57 @@ public class BasicSeed : Seed
 
     public override void SpawnNewSeeds()
     {
-        float spawnIndex = 0;
+        float spawnIndex ;
         spawnIndex = UnityEngine.Random.Range(0f, 1f);
+        print("SpawnIndex" + spawnIndex);
 
-        if (spawnIndex <= MayorSpawnPercentage)
+
+        if (spawnIndex < MayorSpawnPercentage)
         {
             for (int i = 0; i < 2; i++)
             {
-                GameObject newSeed = new GameObject("Seed");
-                newSeed.AddComponent<BasicSeed>();
-                BasicSeed seed = newSeed.GetComponent<BasicSeed>();
-                seed = this;
-
-                Instantiate(newSeed, transform);
+                switch (seedType)
+                {
+                    case SeedType.A:
+                        SeedSpawnManager.instance.SpawnBasicSeed(1 , spawnPoints[i]);
+                        break;
+                    case SeedType.B:
+                        SeedSpawnManager.instance.SpawnBasicSeed(2, spawnPoints[i]);
+                        break;
+                    case SeedType.C:
+                        SeedSpawnManager.instance.SpawnBasicSeed(3, spawnPoints[i]);
+                        break;
+                    case SeedType.D:
+                        SeedSpawnManager.instance.SpawnBasicSeed(5, spawnPoints[i]);
+                        break;
+                    default:
+                        break;
+                }
+                print("B");
             }
         }
         else
         {
             for (int i = 0; i < 3; i++)
             {
-                GameObject newSeed = new GameObject("Seed");
-                newSeed.AddComponent<BasicSeed>();
-                BasicSeed seed = newSeed.GetComponent<BasicSeed>();
-                seed = this;
-
-                Instantiate(newSeed, transform);
+                switch (seedType)
+                {
+                    case SeedType.A:
+                        SeedSpawnManager.instance.SpawnBasicSeed(1, spawnPoints[i]);
+                        break;
+                    case SeedType.B:
+                        SeedSpawnManager.instance.SpawnBasicSeed(2, spawnPoints[i]);
+                        break;
+                    case SeedType.C:
+                        SeedSpawnManager.instance.SpawnBasicSeed(3, spawnPoints[i]);
+                        break;
+                    case SeedType.D:
+                        SeedSpawnManager.instance.SpawnBasicSeed(5, spawnPoints[i]);
+                        break;
+                    default:
+                        break;
+                }
+                print("A");
             }
         }
 
