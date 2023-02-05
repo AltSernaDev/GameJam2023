@@ -9,8 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4964124108246363291}
-  - component: {fileID: 6547056047827508701}
-  - component: {fileID: 4877483200012824377}
+  - component: {fileID: -5901170665931939134}
   - component: {fileID: 6551314409989432587}
   - component: {fileID: 1894302457119687835}
   - component: {fileID: 5777741861590923183}
@@ -28,24 +27,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108794322340789419}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.39907697, y: 2.183271, z: 1.6992106}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6547056047827508701
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1108794322340789419}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &4877483200012824377
-MeshRenderer:
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!137 &-5901170665931939134
+SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -59,12 +50,15 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
+  m_RayTracingMode: 3
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6c2ecc5f479e3da4b8e18c6465138a0d, type: 2}
+  - {fileID: 2100000, guid: 1154d364ce3a5e44d8f494ea977dbcb3, type: 2}
+  - {fileID: 2100000, guid: fa4ba5b06831d6242938296269893f6c, type: 2}
+  - {fileID: 2100000, guid: b2b6a75af322dcd4c946d7cecb17039b, type: 2}
+  - {fileID: 2100000, guid: c6182056b93849746afb5147ac426a8c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,7 +79,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 1
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: 4711208715938537054, guid: 7574684c0b245314da3837b4e2eb7e05, type: 3}
+  m_Bones: []
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 0}
+  m_AABB:
+    m_Center: {x: 0.004150152, y: -0.1021415, z: 3.6801467}
+    m_Extent: {x: 3.3807404, y: 3.4633555, z: 3.7422113}
+  m_DirtyAABB: 0
 --- !u!135 &6551314409989432587
 SphereCollider:
   m_ObjectHideFlags: 0
