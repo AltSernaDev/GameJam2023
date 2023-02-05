@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Plant
+  - SeedBed
   layers:
   - Default
   - TransparentFX
@@ -11,13 +13,8 @@ TagManager:
   - 
   - Water
   - UI
-<<<<<<< Updated upstream
   - 
-  - 
-=======
-  - Player
   - Collectable
->>>>>>> Stashed changes
   - 
   - 
   - 

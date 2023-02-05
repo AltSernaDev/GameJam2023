@@ -5,13 +5,6 @@ using UnityEngine;
 
 public class BasicSeed : Seed
 {
-    [SerializeField] float m_growthTimer;
-    float m_initialGrowthTime;
-    [SerializeField] float m_mayorSpawnPercentage;
-    [SerializeField] float m_deathTimer;
-
-    Action onDeath;
-
     public enum SeedType : int
     {
         A = 1,
@@ -19,48 +12,74 @@ public class BasicSeed : Seed
         C = 3,
         D = 5
     }
+
     public SeedType seedType;
+    [SerializeField] Transform[] spawnPoints;
 
-    private void Start()
+    private void OnEnable()
     {
-        status = GrowthStatus.seed;
-        m_initialGrowthTime = m_growthTimer;
+        Status = GrowthStatus.seed;
+        InitialGrowthTime = GrowthTimer;
 
-        onDeath += Die;
+        OnDeath += Die;
     }
 
     public override void SpawnNewSeeds()
     {
-        float spawnIndex = 0;
+        float spawnIndex ;
         spawnIndex = UnityEngine.Random.Range(0f, 1f);
+        print("SpawnIndex" + spawnIndex);
 
-        if (spawnIndex <= m_mayorSpawnPercentage)
+
+        if (spawnIndex < MayorSpawnPercentage)
         {
             for (int i = 0; i < 2; i++)
             {
-                GameObject newSeed = new GameObject("Seed");
-                newSeed.AddComponent<BasicSeed>();
-                BasicSeed seed = newSeed.GetComponent<BasicSeed>();
-                seed = this;
-
-                Instantiate(newSeed, transform);
-                print("a");
+                switch (seedType)
+                {
+                    case SeedType.A:
+                        SeedSpawnManager.instance.SpawnBasicSeed(1 , spawnPoints[i]);
+                        break;
+                    case SeedType.B:
+                        SeedSpawnManager.instance.SpawnBasicSeed(2, spawnPoints[i]);
+                        break;
+                    case SeedType.C:
+                        SeedSpawnManager.instance.SpawnBasicSeed(3, spawnPoints[i]);
+                        break;
+                    case SeedType.D:
+                        SeedSpawnManager.instance.SpawnBasicSeed(5, spawnPoints[i]);
+                        break;
+                    default:
+                        break;
+                }
+                print("B");
             }
         }
         else
         {
             for (int i = 0; i < 3; i++)
             {
-                GameObject newSeed = new GameObject("Seed");
-                newSeed.AddComponent<BasicSeed>();
-                BasicSeed seed = newSeed.GetComponent<BasicSeed>();
-                seed = this;
-
-                Instantiate(newSeed, transform);
-                print("b");
+                switch (seedType)
+                {
+                    case SeedType.A:
+                        SeedSpawnManager.instance.SpawnBasicSeed(1, spawnPoints[i]);
+                        break;
+                    case SeedType.B:
+                        SeedSpawnManager.instance.SpawnBasicSeed(2, spawnPoints[i]);
+                        break;
+                    case SeedType.C:
+                        SeedSpawnManager.instance.SpawnBasicSeed(3, spawnPoints[i]);
+                        break;
+                    case SeedType.D:
+                        SeedSpawnManager.instance.SpawnBasicSeed(5, spawnPoints[i]);
+                        break;
+                    default:
+                        break;
+                }
+                print("A");
             }
         }
 
-        onDeath();
+        OnDeath();
     }
 }

@@ -23,10 +23,7 @@ public class Hook : MonoBehaviour
     void Start()
     {
         canyon = transform.parent;
-        gameObject.GetComponent<Rigidbody>().AddForce((AimPoint.instance.aimPoint - canyon.position).normalized * 20, ForceMode.VelocityChange);
         lineRenderer = gameObject.GetComponent<LineRenderer>();
-        state = State.Thrown;
-        timer = 0;
     }
     void Update()
     {
@@ -51,20 +48,13 @@ public class Hook : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.isTrigger && (int)state < 1)
-        {
-            state = State.Hit;
-            target = other.gameObject;
-        }
+        state = State.Hit;
+        target = other.gameObject;
     }
     void Throw()
     {
-        timer += Time.deltaTime;
         if (timer >= throwTime)
-        {
-            gameObject.GetComponent<Rigidbody>().Sleep();
-            state = State.PickingUp;
-        }
+            state = State.Thrown;
     }
     void OnHit()
     {
@@ -76,17 +66,16 @@ public class Hook : MonoBehaviour
         else
             target = null;
 
-        gameObject.GetComponent<Rigidbody>().Sleep();
-
         state = State.PickingUp;
     }
     bool Return()
     {
         bool done = false;
         if (transform.position != canyon.position)
+        {
             transform.position = Vector3.MoveTowards(transform.position, canyon.position, 20 * Time.deltaTime);
-        else
             done = true;
+        }
         return done;
     }
     void Comeback()

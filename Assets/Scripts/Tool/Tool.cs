@@ -15,7 +15,7 @@ public class Tool : MonoBehaviour
     [SerializeField] InventoryManager inventory;
     [SerializeField] Transform canyon; 
     [SerializeField] GameObject hook;
-    [SerializeField] float fireRate, bulletSpeed;
+    [SerializeField] float fireRate, bulletSpeed, hookSpeed;
 
     private void Update()
     {
@@ -60,7 +60,10 @@ public class Tool : MonoBehaviour
         {
             aimPoint = aimPoint.normalized;
 
-            hookInstance = GameObject.Instantiate(hook,canyon); 
+            hookInstance = GameObject.Instantiate(hook);    
+            hook.transform.position = canyon.position;
+
+            hook.GetComponent<Rigidbody>().AddForce(aimPoint.normalized * hookSpeed, ForceMode.VelocityChange);
 
             shooting = true;
         }

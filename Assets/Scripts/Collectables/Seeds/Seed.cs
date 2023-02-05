@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class Seed : Collectable
 {
-    [SerializeField] float growthTimer;
-    float initialGrowthTime;
+    public Rigidbody rigidbody;
+    [SerializeField] float growthTimer, deathTimer;
+    float initialGrowthTime, initialDeathTimer;
     [SerializeField] float mayorSpawnPercentage;
+
+    public float healthPoints;
 
     Action onDeath;
     public enum GrowthStatus
@@ -17,9 +20,14 @@ public class Seed : Collectable
         tree
     }
 
-    public GrowthStatus status;
+    [SerializeField]
+    private GrowthStatus status;
 
-    public float GrowthTime { get => growthTimer; }
+    public GrowthStatus Status { get => status; set => status = value; }
+    public float GrowthTimer { get => growthTimer; set => growthTimer = value; }
+    public float InitialGrowthTime { get => initialGrowthTime; set => initialGrowthTime = value; }
+    public float MayorSpawnPercentage { get => mayorSpawnPercentage; set => mayorSpawnPercentage = value; }
+    public Action OnDeath { get => onDeath; set => onDeath = value; }
 
     private void Start()
     {
@@ -31,16 +39,34 @@ public class Seed : Collectable
 
     private void Update()
     {
-        if(status == GrowthStatus.planted)
+        if (status == GrowthStatus.planted)
         {
             growthTimer -= 1 * Time.deltaTime;
         }
 
-        if(growthTimer <= 0 && status == GrowthStatus.planted)
+        if (growthTimer <= 0 && status == GrowthStatus.planted)
         {
+            rigidbody.useGravity = false;
+            rigidbody.Sleep();
+
+            GetComponent<Collider>().enabled = false;
+
             status = GrowthStatus.tree;
             growthTimer = initialGrowthTime;
-            BecomeTree();
+            SpawnNewSeeds();
+        }
+        if (status == GrowthStatus.tree)
+        {
+            deathTimer -= 1 * Time.deltaTime;
+        }
+        if (deathTimer == 0)
+        {
+            Die();
+        }
+
+        if (healthPoints <= 0)
+        {
+            Die();
         }
     }
 
@@ -48,15 +74,21 @@ public class Seed : Collectable
     {
         status = GrowthStatus.planted;
     }
-    public void BecomeTree()
-    {
-        //Do Something
-    }
+
     public virtual void Die()
     {
         Destroy(gameObject);
     }
+    public void ReceiveDamage(float damage)
+    {
+        healthPoints -= damage;
+    }
     public virtual void SpawnNewSeeds()
     {
+    }
+
+    protected virtual void OnCollisionEnter(Collision collision)
+    {
+        rigidbody.Sleep();
     }
 }
