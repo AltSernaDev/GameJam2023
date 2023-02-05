@@ -6,20 +6,28 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private Button hudPause;
-    [SerializeField] private Button unpauseButton;
     [SerializeField] private GameObject panelMenu;
 
-
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            PauseGame();
+        }
+    }
     public void PauseGame()
     {
         Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         panelMenu.SetActive(true);
     }
 
     public void UnPauseGame()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         panelMenu.SetActive(false);
     }
 
