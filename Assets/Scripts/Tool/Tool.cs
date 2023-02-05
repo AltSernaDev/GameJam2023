@@ -60,10 +60,7 @@ public class Tool : MonoBehaviour
         {
             aimPoint = aimPoint.normalized;
 
-            hookInstance = GameObject.Instantiate(hook);    
-            hook.transform.position = canyon.position;
-
-            hook.GetComponent<Rigidbody>().AddForce(aimPoint.normalized * hookSpeed, ForceMode.VelocityChange);
+            hookInstance = GameObject.Instantiate(hook, canyon);    
 
             shooting = true;
         }
