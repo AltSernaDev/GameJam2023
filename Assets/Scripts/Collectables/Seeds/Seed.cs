@@ -6,11 +6,11 @@ using UnityEngine;
 public class Seed : Collectable
 {
     public Rigidbody rigidbody;
-    [SerializeField] float growthTimer;
-    float initialGrowthTime;
+    [SerializeField] float growthTimer, deathTimer;
+    float initialGrowthTime, initialDeathTimer;
     [SerializeField] float mayorSpawnPercentage;
 
-    public ParticleSystem dieFX;
+    public float healthPoints;
 
     Action onDeath;
     public enum GrowthStatus
@@ -53,7 +53,20 @@ public class Seed : Collectable
 
             status = GrowthStatus.tree;
             growthTimer = initialGrowthTime;
-            BecomeTree();
+            SpawnNewSeeds();
+        }
+        if (status == GrowthStatus.tree)
+        {
+            deathTimer -= 1 * Time.deltaTime;
+        }
+        if (deathTimer == 0)
+        {
+            Die();
+        }
+
+        if (healthPoints <= 0)
+        {
+            Die();
         }
     }
 
@@ -61,29 +74,14 @@ public class Seed : Collectable
     {
         status = GrowthStatus.planted;
     }
-    public void BecomeTree()
-    {
-        SpawnNewSeeds();
-    }
-
-    public IEnumerator DestroyFX(float fxTime)
-    {
-        //do Something        
-        yield return new WaitForSeconds(fxTime);
-        //Destroy(gameObject);
-    }
 
     public virtual void Die()
     {
-        if (Status == GrowthStatus.seed)
-        {
-            float animationTime = dieFX.main.duration;
-
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
-            StartCoroutine(DestroyFX(animationTime));
-            dieFX.Play();
-        }
-        else Destroy(gameObject);
+        Destroy(gameObject);
+    }
+    public void ReceiveDamage(float damage)
+    {
+        healthPoints -= damage;
     }
     public virtual void SpawnNewSeeds()
     {
