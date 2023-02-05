@@ -5020,7 +5020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5777741861590923183}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 847bc0c2f69ca43bb94c8cf281eb45fd, type: 3}
   plantGeneric: {fileID: 0}
   skins: []
   childToSkin: {fileID: 0}
