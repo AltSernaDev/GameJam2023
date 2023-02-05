@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6745394268410671297}
   - component: {fileID: 2107526208693948753}
   - component: {fileID: 6293829387884454501}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Seed B
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,8 +102,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.82
+  m_Center: {x: 0, y: 0, z: 1}
 --- !u!114 &2107526208693948753
 MonoBehaviour:
   m_ObjectHideFlags: 0
