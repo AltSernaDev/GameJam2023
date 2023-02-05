@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button unpauseButton;
     [SerializeField] private GameObject panelMenu;
 
+
     public void PauseGame()
     {
         Time.timeScale = 0;
@@ -20,5 +21,18 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 0;
         panelMenu.SetActive(false);
+    }
+
+    public void Play()
+    {
+        ScenesManager.instance.LoadScene(1);
+    }
+    public void Settings()
+    {
+
+    }
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
