@@ -51,7 +51,7 @@ public class InventoryManager : MonoBehaviour
 
     }
 
-    public void AddToInventory(Collectable item)
+    public void AddToInventory(Seeds item)
     {
         for (int i = 0; i < invetoryItems.Length; i++)
         {
@@ -63,7 +63,7 @@ public class InventoryManager : MonoBehaviour
                 return;
             }
 
-            if (invetoryItems[i].itemsCount > 0 && item.type == invetoryItems[i].items[0].type)
+            if (invetoryItems[i].itemsCount > 0 && item.tipo == invetoryItems[i].items[0].tipo)
             {
                 if (invetoryItems[i].CanEnqueue())
                 {
@@ -77,7 +77,7 @@ public class InventoryManager : MonoBehaviour
 
     }
 
-    public Collectable RemoveItem()
+    public Seeds RemoveItem()
     {
         if (invetoryItems[SlotSlectedt].canRemove())
         {

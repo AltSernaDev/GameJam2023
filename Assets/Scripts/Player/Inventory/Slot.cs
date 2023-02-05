@@ -9,7 +9,7 @@ using UnityEngine.Events;
 public class Slot : MonoBehaviour
 {
     [SerializeField]private Sprite itemIcon;
-    [SerializeField]public List<Collectable> items;
+    [SerializeField]public List<Seeds> items;
     [SerializeField]public int itemsCount;
     [SerializeField]public int maxStorage;
 
@@ -31,14 +31,14 @@ public class Slot : MonoBehaviour
 
 
 
-    public void AddItem(Collectable item)
+    public void AddItem(Seeds item)
     {
         items.Add(item);
         itemsCount = items.Count;
         InventoryManager.onItemCounted();
     }
 
-    public Collectable RemoveItem()
+    public Seeds RemoveItem()
     {
         var colleted = items[0];
         items.Remove(items[0]);

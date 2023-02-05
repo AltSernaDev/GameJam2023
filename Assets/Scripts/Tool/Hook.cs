@@ -24,6 +24,7 @@ public class Hook : MonoBehaviour
     {
         canyon = transform.parent;
         lineRenderer = gameObject.GetComponent<LineRenderer>();
+        gameObject.GetComponent<Rigidbody>().AddForce((AimPoint.instance.aimPoint - canyon.position).normalized * 20, ForceMode.VelocityChange);
     }
     void Update()
     {
@@ -48,13 +49,21 @@ public class Hook : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        state = State.Hit;
-        target = other.gameObject;
+        if (!other.isTrigger)
+        {
+            state = State.Hit;
+            target = other.gameObject;
+        }
+
     }
     void Throw()
     {
         if (timer >= throwTime)
-            state = State.Thrown;
+        {
+            gameObject.GetComponent<Rigidbody>().Sleep();
+            state = State.PickingUp;
+        }
+        timer += Time.deltaTime;
     }
     void OnHit()
     {
@@ -66,16 +75,16 @@ public class Hook : MonoBehaviour
         else
             target = null;
 
+        gameObject.GetComponent<Rigidbody>().Sleep();
         state = State.PickingUp;
     }
     bool Return()
     {
         bool done = false;
         if (transform.position != canyon.position)
-        {
             transform.position = Vector3.MoveTowards(transform.position, canyon.position, 20 * Time.deltaTime);
+        else
             done = true;
-        }
         return done;
     }
     void Comeback()
@@ -90,11 +99,12 @@ public class Hook : MonoBehaviour
         {           
             target.transform.parent = null;
             target.GetComponent<Rigidbody>().Sleep();
-            transform.parent.parent.gameObject.GetComponent<Tool>().SaveCollectable(target.GetComponent<Collectable>()); // refactory collectable
+            transform.parent.parent.gameObject.GetComponent<Tool>().SaveCollectable(target.GetComponent<Seeds>()); // refactory collectable
             done = true;
         }
         else
             done = true;
+        transform.parent.parent.gameObject.GetComponent<Tool>().open = false;
         return done;
     }
     void DestroyTarget()

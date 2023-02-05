@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    [SerializeField] float damage;
+    [SerializeField] int damage;
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Plant"))
         {
-            Seed enemySeed = collision.gameObject.GetComponent<Seed>();
+            Seeds enemySeed = collision.gameObject.GetComponent<Seeds>();
 
             enemySeed.ReceiveDamage(damage);
         }
