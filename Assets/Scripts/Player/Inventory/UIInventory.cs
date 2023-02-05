@@ -20,7 +20,7 @@ public class UIInventory : MonoBehaviour
 
     private void Update()
     {
-        UpdateStack();
+        //UpdateStack();
     }
 
     private void OnEnable()
