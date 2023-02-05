@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 6695859107372356080}
   - component: {fileID: 6208247560942437204}
   - component: {fileID: 4383787704530586913}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Seed BC
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

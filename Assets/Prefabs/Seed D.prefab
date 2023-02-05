@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1979431717259226334}
-  - component: {fileID: 393703800840119630}
   - component: {fileID: 5032117514593518814}
   - component: {fileID: 1131229956972312554}
   - component: {fileID: 7557099732649922957}
-  m_Layer: 0
+  - component: {fileID: 4990133304809458088}
+  m_Layer: 7
   m_Name: Seed D
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,19 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &393703800840119630
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5836520755714407662}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5032117514593518814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,3 +125,16 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0, z: 1}
     m_Extent: {x: 0.82, y: 0.82, z: 1}
   m_DirtyAABB: 0
+--- !u!65 &4990133304809458088
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5836520755714407662}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.58, y: 1.6, z: 1.67}
+  m_Center: {x: 0, y: 0, z: 0.85}
