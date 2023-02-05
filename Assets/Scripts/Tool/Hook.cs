@@ -36,7 +36,6 @@ public class Hook : MonoBehaviour
         if (other.gameObject.layer == 7)
         {
             target = other.gameObject;
-            Destroy(target.GetComponent<Rigidbody>());
             target.transform.parent = transform;
             hasTarget = true;
         }
@@ -46,8 +45,8 @@ public class Hook : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
 
-        transform.parent.gameObject.GetComponent<Tool>().SaveCollectable(target.GetComponent<Collectable>());
-        Destroy(target.gameObject);
+        transform.parent.parent.gameObject.GetComponent<Tool>().SaveCollectable(target.GetComponent<Collectable>());
+        target.gameObject.SetActive(false);
         target = null;
         TurnOff();
     }

@@ -51,7 +51,7 @@ public class InventoryManager : MonoBehaviour
                 return;
             }
 
-            if (invetoryItems[i].itemsCount > 0 && item == invetoryItems[i].items[0])
+            if (invetoryItems[i].itemsCount > 0 && item.type == invetoryItems[i].items[0].type)
             {
                 if (invetoryItems[i].CanEnqueue())
                 {

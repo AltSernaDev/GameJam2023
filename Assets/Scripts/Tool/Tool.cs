@@ -9,6 +9,8 @@ public class Tool : MonoBehaviour
     Vector3 aimPoint;
     bool shooting;
     float shootTimer;
+    Collectable currentCollectable;
+
     [SerializeField] InventoryManager inventory;
     [SerializeField] Transform canyon, hook;
     [SerializeField] float fireRate, bulletSpeed, hookSpeed;
@@ -34,10 +36,14 @@ public class Tool : MonoBehaviour
         {
             aimPoint = aimPoint.normalized;
 
-            var currentCollectable = inventory.RemoveItem();//cambiar 
+            currentCollectable = inventory.RemoveItem();//cambiar 
 
             if (currentCollectable != null)
             {
+                currentCollectable.gameObject.SetActive(true);
+
+                currentCollectable.transform.parent = null;
+
                 currentCollectable.transform.position = canyon.position;
 
                 currentCollectable.GetComponent<Rigidbody>().Sleep();
