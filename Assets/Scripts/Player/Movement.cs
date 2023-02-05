@@ -6,8 +6,9 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     CharacterController controller;
-    [SerializeField] float speed = 2, runMultiplier = 2, gravity = 9.8f;
-    [Range(0.5f, 5f)][SerializeField] float jumpHeigth = 1f;
+    [SerializeField] float speed = 2, runMultiplier = 2;
+    public float gravity = 9.8f;
+    [Range(0.5f, 5f)] public float jumpHeigth = 1f;
 
     Vector3 normalDirection, gravityV, jump;
     float x, z, normalAngleD, normalAngleR, Jmagnitude, baseMovementModifier, angleModifier, movementModifierX, movementModifierZ, jumpModifier;
