@@ -4,6 +4,7 @@ using System.Data.SqlTypes;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Slot : MonoBehaviour
 {
@@ -34,7 +35,6 @@ public class Slot : MonoBehaviour
     {
         items.Add(item);
         itemsCount = items.Count;
-        Debug.Log(itemsCount);
     }
 
     public Collectable RemoveItem()

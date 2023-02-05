@@ -11,17 +11,27 @@ public class UIInventory : MonoBehaviour
     [SerializeField] private InventoryManager inventoryManager;
     public GameObject[] slotUI;
 
+    private void Start()
+    {
+        SlotSlected(inventoryManager.SlotSlectedt);
+    }
+
 
     private void OnEnable()
     {
         inventoryManager.onAddItem += SetIcon;
         inventoryManager.onSlotEmpty += SetDefaultIcon;
+        inventoryManager.onSlotSelectedChanged += SlotSlected;
+        inventoryManager.onItemCounted += UpdateStack;
     }
 
     private void OnDisable()
     {
         inventoryManager.onAddItem -= SetIcon;
         inventoryManager.onSlotEmpty -= SetDefaultIcon;
+        inventoryManager.onSlotSelectedChanged -= SlotSlected;
+        inventoryManager.onItemCounted -= UpdateStack;
+        
     }
 
     private void SetIcon(int index)
@@ -36,7 +46,20 @@ public class UIInventory : MonoBehaviour
 
     private void SlotSlected(int index)
     {
+        foreach (var slot in slotUI)
+        {
+            slot.GetComponent<Image>().color = Color.white;
+        }
         slotUI[index].GetComponent<Image>().color = Color.gray;
+    }
+
+    private void UpdateStack(int count)
+    {
+        for (int i = 0; i < inventoryManager.invetoryItems.Length; i++)
+        {
+            slotUI[i].GetComponentInChildren<Text>().text = inventoryManager.ChangeNumber(i).ToString();
+        }
+
     }
 
 

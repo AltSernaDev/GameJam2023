@@ -17,6 +17,8 @@ public class InventoryManager : MonoBehaviour
     public Slot[] invetoryItems;
     public UnityAction<int> onAddItem;
     public UnityAction<int> onSlotEmpty;
+    public UnityAction<int> onSlotSelectedChanged;
+    public UnityAction<int> onItemCounted;
 
     public int SlotSlectedt
     {
@@ -34,8 +36,18 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) SlotSlectedt++;
-        if (Input.GetKeyDown(KeyCode.O)) SlotSlectedt--;
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SlotSlectedt++;
+            onSlotSelectedChanged?.Invoke(slotSlectedt);
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            SlotSlectedt--;
+            onSlotSelectedChanged?.Invoke(slotSlectedt);
+            
+        }
 
     }
 
@@ -76,5 +88,11 @@ public class InventoryManager : MonoBehaviour
         {
             return null;
         }
+    }
+
+    public int ChangeNumber(int pos)
+    {
+        return invetoryItems[pos].itemsCount;
+
     }
 }
