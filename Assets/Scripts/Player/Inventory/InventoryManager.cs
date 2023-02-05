@@ -36,13 +36,13 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f )
         {
             SlotSlectedt++;
             onSlotSelectedChanged?.Invoke(slotSlectedt);
         }
 
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f )
         {
             SlotSlectedt--;
             onSlotSelectedChanged?.Invoke(slotSlectedt);
