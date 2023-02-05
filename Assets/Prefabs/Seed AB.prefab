@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5438066680996733095}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: d5048ebb0f44d30549f4b1827775375a, type: 3}
   plantGeneric: {fileID: 0}
   skins: []
   childToSkin: {fileID: 0}
