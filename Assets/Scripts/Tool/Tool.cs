@@ -10,9 +10,11 @@ public class Tool : MonoBehaviour
     bool shooting;
     float shootTimer;
     Collectable currentCollectable;
+    GameObject hookInstance;
 
     [SerializeField] InventoryManager inventory;
-    [SerializeField] Transform canyon, hook;
+    [SerializeField] Transform canyon; 
+    [SerializeField] GameObject hook;
     [SerializeField] float fireRate, bulletSpeed, hookSpeed;
 
     private void Update()
@@ -41,11 +43,8 @@ public class Tool : MonoBehaviour
             if (currentCollectable != null)
             {
                 currentCollectable.gameObject.SetActive(true);
-
                 currentCollectable.transform.parent = null;
-
                 currentCollectable.transform.position = canyon.position;
-
                 currentCollectable.GetComponent<Rigidbody>().Sleep();
 
                 currentCollectable.GetComponent<Rigidbody>().AddForce(aimPoint.normalized * bulletSpeed, ForceMode.VelocityChange); 
@@ -61,10 +60,8 @@ public class Tool : MonoBehaviour
         {
             aimPoint = aimPoint.normalized;
 
-            hook.gameObject.SetActive(true);            
+            hookInstance = GameObject.Instantiate(hook);    
             hook.transform.position = canyon.position;
-            hook.gameObject.GetComponent<Hook>().Return(0.5f);
-            hook.GetComponent<Rigidbody>().Sleep();
 
             hook.GetComponent<Rigidbody>().AddForce(aimPoint.normalized * hookSpeed, ForceMode.VelocityChange);
 

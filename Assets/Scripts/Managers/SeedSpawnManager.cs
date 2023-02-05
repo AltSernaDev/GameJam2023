@@ -20,16 +20,16 @@ public class SeedSpawnManager : MonoBehaviour
         switch (typeIndex)
         {
             case 1:
-                Instantiate(prefab_A, spawnPoint);
+                Instantiate(prefab_A, spawnPoint.position, spawnPoint.rotation);
                 break;
             case 2:
-                Instantiate(prefab_B, spawnPoint);
+                Instantiate(prefab_B, spawnPoint.position, spawnPoint.rotation);
                 break;
             case 3:
-                Instantiate(prefab_C, spawnPoint);
+                Instantiate(prefab_C, spawnPoint.position, spawnPoint.rotation);
                 break;
             case 5:
-                Instantiate(prefab_D, spawnPoint);
+                Instantiate(prefab_D, spawnPoint.position, spawnPoint.rotation);
                 break;
         }
     }
@@ -39,27 +39,27 @@ public class SeedSpawnManager : MonoBehaviour
         switch (typeIndex)
         {
             case 3:
-                Instantiate(prefab_AB, spawnPoint);
+                Instantiate(prefab_AB, spawnPoint.position , spawnPoint.rotation);
                 break;
 
             case 5:
-                Instantiate(prefab_BC, spawnPoint);
+                Instantiate(prefab_BC, spawnPoint.position, spawnPoint.rotation);
                 break;
 
             case 4:
-                Instantiate(prefab_AC, spawnPoint);
+                Instantiate(prefab_AC, spawnPoint.position, spawnPoint.rotation);
                 break;
 
             case 6:
-                Instantiate(prefab_DA, spawnPoint);
+                Instantiate(prefab_DA, spawnPoint.position, spawnPoint.rotation);
                 break;
 
             case 7:
-                Instantiate(prefab_DB, spawnPoint);
+                Instantiate(prefab_DB, spawnPoint.position, spawnPoint.rotation);
                 break;
 
             case 8:
-                Instantiate(prefab_DC, spawnPoint);
+                Instantiate(prefab_DC, spawnPoint.position, spawnPoint.rotation);
                 break;
         }
     }

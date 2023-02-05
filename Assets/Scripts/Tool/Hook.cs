@@ -5,76 +5,109 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class Hook : MonoBehaviour
 {
+    [SerializeField] float throwTime;
+    float timer;
     GameObject target;
     Transform canyon;
     LineRenderer lineRenderer;
-    bool hasTarget = false;
+
+    enum State
+    {
+        Thrown,
+        Hit,
+        PickingUp,
+        Destroy
+    }
+    State state;
 
     void Start()
     {
         canyon = transform.parent;
         lineRenderer = gameObject.GetComponent<LineRenderer>();
-        gameObject.SetActive(false);
     }
     void Update()
     {
         lineRenderer.SetPosition(0, canyon.position);
         lineRenderer.SetPosition(1, transform.position);
 
-        if (canyon.position == transform.position && target != null && hasTarget)
+        switch (state)
         {
-            gameObject.GetComponent<Rigidbody>().Sleep();
-            StartCoroutine(Drop());
-            hasTarget = false;
+            case State.Thrown:
+                Throw();
+                break;
+            case State.Hit:
+                OnHit();
+                break;
+            case State.PickingUp:
+                Comeback();
+                break;
+            case State.Destroy:
+                DestroyTarget();
+                break;
         }
     }
-
     private void OnTriggerEnter(Collider other)
     {
-        gameObject.GetComponent<Rigidbody>().Sleep();
-        StartCoroutine(Comeback(0f));
-
-        if (other.gameObject.layer == 7)
+        state = State.Hit;
+        target = other.gameObject;
+    }
+    void Throw()
+    {
+        if (timer >= throwTime)
+            state = State.Thrown;
+    }
+    void OnHit()
+    {
+        if (target.gameObject.layer == 7)
         {
-            target = other.gameObject;
             target.transform.parent = transform;
-            hasTarget = true;
+            target.GetComponent<Rigidbody>().Sleep();
         }
+        else
+            target = null;
+
+        state = State.PickingUp;
     }
-
-    IEnumerator Drop()
+    bool Return()
     {
-        yield return new WaitForSeconds(0.2f);
-
-        transform.parent.parent.gameObject.GetComponent<Tool>().SaveCollectable(target.GetComponent<Collectable>());
-        target.gameObject.SetActive(false);
-        target = null;
-        TurnOff();
-    }
-
-    private void TurnOff()
-    {
-        transform.localPosition = Vector3.zero;
-        gameObject.SetActive(false);
-    }
-
-    IEnumerator Comeback(float time)
-    {
-        yield return new WaitForSeconds(time);
-
-        gameObject.GetComponent<Rigidbody>().Sleep();
-
-        while (transform.position != canyon.position)
+        bool done = false;
+        if (transform.position != canyon.position)
         {
             transform.position = Vector3.MoveTowards(transform.position, canyon.position, 20 * Time.deltaTime);
-            yield return null;
+            done = true;
         }
-        
-        yield return new WaitUntil(() => target == null);
-        TurnOff();
+        return done;
     }
-    public void Return(float time)
+    void Comeback()
     {
-        StartCoroutine(Comeback(time));
+        if (Return())
+            state = State.Destroy;  
+    }
+    bool DropToInventory()
+    {
+        bool done = false;
+        if (target != null)
+        {           
+            target.transform.parent = null;
+            target.GetComponent<Rigidbody>().Sleep();
+            transform.parent.parent.gameObject.GetComponent<Tool>().SaveCollectable(target.GetComponent<Collectable>()); // refactory collectable
+            done = true;
+        }
+        else
+            done = true;
+        return done;
+    }
+    void DestroyTarget()
+    {
+        if (DropToInventory())
+        {
+            if (target != null)
+            {
+                target.SetActive(false);
+                target = null;
+            }
+            else
+                Destroy(gameObject);
+        }
     }
 }

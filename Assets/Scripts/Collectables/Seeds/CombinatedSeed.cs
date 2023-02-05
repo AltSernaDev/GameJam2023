@@ -17,6 +17,8 @@ public class CombinatedSeed : Seed
     }
     public SeedType seedType;
 
+    [SerializeField] Transform[] spawnPoints;
+
     private void OnEnable()
     {
         Status = GrowthStatus.seed;
@@ -65,26 +67,45 @@ public class CombinatedSeed : Seed
         }
         else
         {
-            GameObject newSeed = new GameObject("Seed");
-            newSeed.AddComponent<CombinatedSeed>();
-            CombinatedSeed seed = newSeed.GetComponent<CombinatedSeed>();
-            seed = this;
-
-            float spawnIndex = 0;
+            float spawnIndex;
             spawnIndex = UnityEngine.Random.Range(0f, 1f);
-
+            print("SpawnIndex" + spawnIndex);
             if (spawnIndex < MayorSpawnPercentage)
             {
-                for (int i = 0; i < minSpawnValue; i++)
+                for (int i = 0; i < 2; i++)
                 {
-                    Instantiate(newSeed, transform);
+                    switch (seedType)
+                    {
+                        case SeedType.AB:
+                            SeedSpawnManager.instance.SpawnCombinedSeed(1, spawnPoints[i]);
+                            break;
+                        case SeedType.BC:
+                            SeedSpawnManager.instance.SpawnCombinedSeed(2, spawnPoints[i]);
+                            break;
+                        case SeedType.AC:
+                            SeedSpawnManager.instance.SpawnCombinedSeed(3, spawnPoints[i]);
+                            break;
+                    }
+                    print("B");
                 }
             }
             else
             {
-                for (int i = 0; i < maxSpawnValue; i++)
+                for (int i = 0; i < 3; i++)
                 {
-                    Instantiate(newSeed, transform);
+                    switch (seedType)
+                    {
+                        case SeedType.AB:
+                            SeedSpawnManager.instance.SpawnCombinedSeed(1, spawnPoints[i]);
+                            break;
+                        case SeedType.BC:
+                            SeedSpawnManager.instance.SpawnCombinedSeed(2, spawnPoints[i]);
+                            break;
+                        case SeedType.AC:
+                            SeedSpawnManager.instance.SpawnCombinedSeed(3, spawnPoints[i]);
+                            break;
+                    }
+                    print("A");
                 }
             }
 
