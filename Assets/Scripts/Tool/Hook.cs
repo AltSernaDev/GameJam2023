@@ -49,7 +49,7 @@ public class Hook : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.isTrigger)
+        if (!other.isTrigger && state == State.Thrown)
         {
             state = State.Hit;
             target = other.gameObject;
@@ -114,10 +114,13 @@ public class Hook : MonoBehaviour
             if (target != null)
             {
                 target.SetActive(false);
+                target.transform.position = new Vector3(0, -100, 0);
                 target = null;
             }
             else
                 Destroy(gameObject);
         }
+        else
+            Destroy(gameObject);
     }
 }

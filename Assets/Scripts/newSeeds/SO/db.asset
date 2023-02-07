@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752ffdb0576f43b49a7d4fd0d27d90fc, type: 3}
+  m_Name: db
+  m_EditorClassIdentifier: 
+  type: 10
+  health: 100
+  icon: {fileID: 21300000, guid: 9c6515ddb68eef1d7aa91a63ca621f77, type: 3}
+  skin: {fileID: 5836520755714407662, guid: 1777e596ba6470144a2f415def6100b3, type: 3}
+  hybrid: 1
+  plantable: 0

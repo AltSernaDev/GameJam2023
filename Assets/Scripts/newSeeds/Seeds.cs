@@ -2,138 +2,75 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+public enum TypeSeed : int
+{
+    generic = 0, a = 1, b = 2, c = 4, d = 8, ab = 3, bc = 6, ac = 5, da = 9, db = 10, dc = 12
+}
 
 public class Seeds : MonoBehaviour
 {
-    int health = 100;
-    public Rigidbody rb;
-    [SerializeField] Sprite[] iconArray;
-    public Sprite iconSeed;
+    public SeedsSO seedSO;
+
+    private TypeSeed type;
+    private int health;
+    private Sprite icon;
+    private GameObject skin;
+    private bool plantable;
+
     [SerializeField] GameObject plantGeneric;
-    int thisSeedSkin=0;
-    [SerializeField] GameObject[] skins=new GameObject[10];
     [SerializeField] Transform childToSkin;
+
     GameObject plantSeed;
+    private bool hybrid;
 
-    public bool plantable, combinada;
+    public TypeSeed Type { get => type; }
+    public int Health { get => health; }
+    public Sprite Icon { get => icon; }
+    public GameObject Skin { get => skin; }
+    public bool Hybrid { get => hybrid; }
+    public bool Plantable { get => plantable; }
 
-
-    public enum TipoSeed
+    public void SetValues()
     {
-        a,b, c, d, ab,bc,ac,da,db,dc,generic
+        if (seedSO != null)
+        {
+            Instantiate(seedSO.skin, childToSkin);
+
+            type = seedSO.type;
+            health = seedSO.health;
+            icon = seedSO.icon;
+            skin = seedSO.skin;
+            hybrid = seedSO.hybrid;
+            plantable = seedSO.plantable;
+        }
     }
-
-    public TipoSeed tipo;
-
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        switch (tipo)
-        {
-            case TipoSeed.a:
-                iconSeed = iconArray[(int)tipo];
-                thisSeedSkin = 0;
-                combinada = false;
-                plantable = true;
-                break;
-            case TipoSeed.b:
-                iconSeed = iconArray[(int)tipo];
-                thisSeedSkin =1;
-                combinada = false;
-                plantable = true;
-
-                break;
-            case TipoSeed.c:
-                iconSeed = iconArray[(int)tipo];
-                thisSeedSkin = 2;
-                combinada = false;
-                plantable = true;
-
-                break;
-            case TipoSeed.d:
-                iconSeed = iconArray[(int)tipo];
-                thisSeedSkin = 3;
-                combinada = false;
-                plantable = true;
-
-                // ==================== Seeds Mezcladas ====================
-
-                break;
-            case TipoSeed.ab:
-                iconSeed = iconArray[(int)tipo];
-                thisSeedSkin = 4;
-                combinada = true;
-                plantable = true;
-
-                break;
-            case TipoSeed.bc:
-                iconSeed = iconArray[(int)tipo];
-                thisSeedSkin = 5;
-                combinada = true;
-                plantable = true;
-
-                break;
-            case TipoSeed.ac:
-                iconSeed = iconArray[(int)tipo];
-                thisSeedSkin = 6;
-                combinada = true;
-                plantable = true;
-
-                // ==================== Seeds tipo D ====================
-
-                break;
-            case TipoSeed.da:
-                iconSeed = iconArray[(int)tipo];
-                thisSeedSkin = 7;
-                combinada = true;
-                plantable = false;
-
-                break;
-            case TipoSeed.db:
-                iconSeed = iconArray[(int)tipo];
-                thisSeedSkin = 8;
-                combinada = true;
-                plantable = false;
-                break;
-            case TipoSeed.dc:
-                iconSeed = iconArray[(int)tipo];
-                thisSeedSkin = 9;
-                combinada = true;
-                plantable = false;
-                break;
-        }
-
- 
-        Instantiate(skins[(int)tipo], childToSkin);
+        SetValues();
     }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (plantable && other.CompareTag("plantZone"))
+        if (seedSO.plantable && other.CompareTag("plantZone") && other.GetComponent<plantZone>() != null)
         {
-            //revise si other.gameobject está ocupado o no
-            if(other.GetComponent<plantZone>())
+            plantZone plantZone = other.GetComponent<plantZone>();
+
+            if (!plantZone.zoneUsed)
             {
-                plantZone plantZone=other.GetComponent<plantZone>();
-                if(!plantZone.zoneUsed)
-                {
-                    plantZone.zoneUsed = true;
-                    plantSeed = Instantiate(plantGeneric, plantZone.seedPosition);
-                    plantSeed.GetComponent<PlantedSeeds>().planta = (PlantedSeeds.tipoPlant)tipo;
-                    plantSeed = null;
-                    Destroy(gameObject);
-                }
+                plantZone.zoneUsed = true;
+
+                plantSeed = Instantiate(plantGeneric, plantZone.seedPosition);
+                plantSeed.GetComponent<PlantedSeeds>().seedSO = seedSO;
+                plantSeed = null;
+
+                Destroy(gameObject);
             }
         }
     }
-
     public void ReceiveDamage(int dmg)
     {
         health -= dmg;
-        if(health<=0)
-        {
+
+        if(health <= 0)
             Destroy(gameObject);
-        }
     }
 }

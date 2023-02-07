@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Plant
   - plantZone
-  - SeedBed
   layers:
   - Default
   - TransparentFX

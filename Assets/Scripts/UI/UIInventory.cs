@@ -42,7 +42,7 @@ public class UIInventory : MonoBehaviour
 
     private void SetIcon(int index)
     {
-        slotUI[index].GetComponent<Image>().sprite = inventoryManager.invetoryItems[index].items[0].iconSeed;
+        slotUI[index].GetComponent<Image>().sprite = inventoryManager.invetoryItems[index].items[0].Icon;
     }
 
     private void SetDefaultIcon(int index)

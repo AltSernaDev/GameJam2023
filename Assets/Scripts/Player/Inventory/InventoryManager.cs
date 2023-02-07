@@ -29,7 +29,6 @@ public class InventoryManager : MonoBehaviour
                 value = invetoryItems.Length - 1;
 
             slotSlectedt = value % invetoryItems.Length;
-            print(slotSlectedt);
             return;
         }
     }
@@ -58,12 +57,11 @@ public class InventoryManager : MonoBehaviour
             if (invetoryItems[i].itemsCount <= 0)
             {
                 invetoryItems[i].AddItem(item);
-                Debug.Log(invetoryItems[i].itemsCount);
                 onAddItem?.Invoke(i);
                 return;
             }
 
-            if (invetoryItems[i].itemsCount > 0 && item.tipo == invetoryItems[i].items[0].tipo)
+            if (invetoryItems[i].itemsCount > 0 && item.Type == invetoryItems[i].items[0].Type)
             {
                 if (invetoryItems[i].CanEnqueue())
                 {

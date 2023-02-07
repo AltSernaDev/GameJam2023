@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6544531175980598061}
   - component: {fileID: 6633112551700789293}
-  - component: {fileID: 1986891188837638454}
   - component: {fileID: 7952598290766224884}
   - component: {fileID: 5744416582113792098}
   - component: {fileID: 4497095356861128226}
@@ -45,48 +44,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3467265006976378402}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1986891188837638454
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3467265006976378402}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 23b1f459c089b71418460d5650a74ef6, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!135 &7952598290766224884
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -98,8 +55,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.4
+  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!114 &5744416582113792098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,36 +69,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561109046102b06439c437925eae72a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  iconArray:
-  - {fileID: 21300000, guid: 847bc0c2f69ca43bb94c8cf281eb45fd, type: 3}
-  - {fileID: 21300000, guid: d44eba696464f4378aebcca175762106, type: 3}
-  - {fileID: 21300000, guid: 49e6259ae807620ac95a66fd8794dbc2, type: 3}
-  - {fileID: 21300000, guid: 5b4a1a61fe40095848f143f631d6409a, type: 3}
-  - {fileID: 21300000, guid: d5048ebb0f44d30549f4b1827775375a, type: 3}
-  - {fileID: 21300000, guid: c1867977e06731793a8c9f9247b0a411, type: 3}
-  - {fileID: 21300000, guid: c21006c5494d0c6e7b04554152562ab2, type: 3}
-  - {fileID: 21300000, guid: 9c6515ddb68eef1d7aa91a63ca621f77, type: 3}
-  - {fileID: 21300000, guid: 581d1402658dad6088e049c30fb8ea2c, type: 3}
-  - {fileID: 21300000, guid: 9d7ad4cee6ac58c38b369f0acdd8eb61, type: 3}
-  iconSeed: {fileID: 0}
+  seedSO: {fileID: 0}
   plantGeneric: {fileID: 4044069819042470628, guid: 7226459fa46206d4d85b64771fcdbc1f,
     type: 3}
-  skins:
-  - {fileID: 1108794322340789419, guid: eb6e2a828caa2804d9147e943338a93a, type: 3}
-  - {fileID: 582582180980730209, guid: 082d1536d41e6be48bed45682d576121, type: 3}
-  - {fileID: 2154277979531539588, guid: 6964869f12886db4f9c7cb13a6f98a30, type: 3}
-  - {fileID: 5836520755714407662, guid: 8c801291b5ba4134880fd222b379d681, type: 3}
-  - {fileID: 582582180980730209, guid: d191c9f051b51f043b3820daa0a696f2, type: 3}
-  - {fileID: 2154277979531539588, guid: fad086dedf36c054f85e2a021b175830, type: 3}
-  - {fileID: 2154277979531539588, guid: f56733eb48692da48a30a4d42f2ac284, type: 3}
-  - {fileID: 5836520755714407662, guid: 9397a6161ff742448afbcbb0bd2d34dd, type: 3}
-  - {fileID: 5836520755714407662, guid: 1777e596ba6470144a2f415def6100b3, type: 3}
-  - {fileID: 5836520755714407662, guid: 128cf0f4c3101004f885b0289e3fbf25, type: 3}
   childToSkin: {fileID: 661635882557876633}
-  plantable: 0
-  combinada: 0
-  tipo: 10
 --- !u!54 &4497095356861128226
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -151,7 +82,7 @@ Rigidbody:
   m_GameObject: {fileID: 3467265006976378402}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.8
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -184,7 +115,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6544531175980598061}
   m_RootOrder: 0
