@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: f20e067633e41d8489abb6b18678d96e
+guid: 4f415e34c07023a4da5a7269d8e3a768
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: hojas.002
-    second: {fileID: 2100000, guid: ff33833adece3eb4097f765a9bbce909, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

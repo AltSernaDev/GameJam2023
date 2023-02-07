@@ -21,3 +21,4 @@ MonoBehaviour:
   growthTime: 200
   probability: 0.95
   maxDrop: 3
+  sizeModifier: 0.75

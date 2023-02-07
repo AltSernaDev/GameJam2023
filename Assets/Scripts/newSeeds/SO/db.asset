@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: db
   m_EditorClassIdentifier: 
   type: 10
-  health: 100
-  icon: {fileID: 21300000, guid: 9c6515ddb68eef1d7aa91a63ca621f77, type: 3}
   skin: {fileID: 5836520755714407662, guid: 1777e596ba6470144a2f415def6100b3, type: 3}
+  health: 100
+  icon: {fileID: 21300000, guid: 581d1402658dad6088e049c30fb8ea2c, type: 3}
   hybrid: 1
   plantable: 0
+  growthTime: 0
+  probability: 0
+  maxDrop: 0
+  sizeModifier: 0

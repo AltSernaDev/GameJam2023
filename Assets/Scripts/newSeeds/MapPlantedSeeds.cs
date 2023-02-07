@@ -1,10 +1,10 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-
-public class PlantedSeeds : MonoBehaviour
+public class MapPlantedSeeds : MonoBehaviour
 {
-    public SeedsSO seedSO;
+    [SerializeField] SeedsSO seedSO;
 
     TypeSeed type;
     GameObject skin;
@@ -14,7 +14,7 @@ public class PlantedSeeds : MonoBehaviour
     float growthTime;
 
     int growthStage;
-    float stageOfGrowingTime, StageTimer;
+    float stageOfGrowingTime, stageTimer;
     public bool growing;
 
     [SerializeField] Transform whereDrop;
@@ -37,7 +37,7 @@ public class PlantedSeeds : MonoBehaviour
             probability = seedSO.probability;
             growthTime = seedSO.growthTime;
 
-            stageOfGrowingTime = growthTime/4;
+            stageOfGrowingTime = growthTime / 4;
 
             skinned = Instantiate(skin, skinParent.transform).GetComponent<SkinnedMeshRenderer>();
             skinBaseScale = skinned.transform.localScale;
@@ -47,39 +47,54 @@ public class PlantedSeeds : MonoBehaviour
     private void Start()
     {
         SetValues();
+        Invoke("CheckSeeds", growthTime);
     }
     private void Update()
     {
         if (growing)
         {
-            StageTimer += Time.deltaTime;
-            skinned.SetBlendShapeWeight(growthStage, (StageTimer / stageOfGrowingTime) * 100);
+            stageTimer += Time.deltaTime;
+            skinned.SetBlendShapeWeight(growthStage, (stageTimer / stageOfGrowingTime) * 100);
 
-            if (StageTimer > stageOfGrowingTime)
+            if (stageTimer > stageOfGrowingTime)
             {
                 growthStage++;
-                StageTimer = 0;
+                stageTimer = 0;
                 if (growthStage > 2)
                 {
                     growing = false;
                     StartCoroutine(SeedDrops());
                 }
             }
-            skinned.transform.localScale = skinBaseScale * (skinModifierScale * (StageTimer + growthStage * (stageOfGrowingTime))/growthTime + 1) ;
+            skinned.transform.localScale = skinBaseScale * (skinModifierScale * (stageTimer + growthStage * (stageOfGrowingTime)) / growthTime + 1);
         }
     }
+
+    private void CheckSeeds()
+    {
+        if (whereDrop.childCount > 0)
+            growing = false;
+        else
+        {
+            Destroy(skinned.gameObject);
+            skinned = null;
+            skinned = Instantiate(skin, skinParent.transform).GetComponent<SkinnedMeshRenderer>();
+            growthStage = 0;
+            stageOfGrowingTime = 0;
+            stageTimer = 0;
+            growing = true;
+        }
+
+        Invoke("CheckSeeds", growthTime);
+    }
+
     IEnumerator SeedDrops()
     {
-        float randProb = Random.Range(0f, 1f);
-        
-        if(randProb < probability)
-            --maxDrop;
-
-        for (int i = 0; i < maxDrop; i++)
+        for (int i = 0; i < maxDrop - 1; i++)
         {
             droppingSeed = Instantiate(genericSeed, whereDrop);
             droppingSeed.GetComponent<Seeds>().seedSO = seedSO;
-            droppingSeed.transform.parent = null;
+
             droppingSeed.GetComponent<Rigidbody>().AddForce(Vector3.forward * 250 + Vector3.right * 300 * Random.Range(-1f, 1f));
 
             droppingSeed = null;
@@ -88,11 +103,5 @@ public class PlantedSeeds : MonoBehaviour
         }
 
         //partcle system
-
-        yield return null; // wait for particles
-
-        transform.GetComponentInParent<PlantZone>().zoneUsed = false;
-        Destroy(gameObject);
     }
 }
-

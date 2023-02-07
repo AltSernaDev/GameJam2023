@@ -32,6 +32,19 @@ public class Mitosis : MonoBehaviour
             }
         }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == seed1.gameObject)
+        {
+            seedIn = false;
+            seed1 = null;
+        }
+        else if (other.gameObject == seed2.gameObject)
+        {
+            seedIn = false;
+            seed2 = null;
+        }
+    }
 
     void MixSeeds(Seeds s1, Seeds s2)
     {
@@ -61,7 +74,7 @@ public class Mitosis : MonoBehaviour
         }
 
         seedIn = false;
-        s1 = null;
-        s2 = null;
+        seed1 = null;
+        seed2 = null;
     }
 }

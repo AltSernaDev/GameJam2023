@@ -12,7 +12,7 @@ public class Seeds : MonoBehaviour
     public SeedsSO seedSO;
 
     private TypeSeed type;
-    private int health;
+    private float health;
     private Sprite icon;
     private GameObject skin;
     private bool plantable;
@@ -24,7 +24,7 @@ public class Seeds : MonoBehaviour
     private bool hybrid;
 
     public TypeSeed Type { get => type; }
-    public int Health { get => health; }
+    public float Health { get => health; }
     public Sprite Icon { get => icon; }
     public GameObject Skin { get => skin; }
     public bool Hybrid { get => hybrid; }
@@ -50,9 +50,9 @@ public class Seeds : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (seedSO.plantable && other.CompareTag("plantZone") && other.GetComponent<plantZone>() != null)
+        if (seedSO.plantable && other.CompareTag("plantZone") && other.GetComponent<PlantZone>() != null)
         {
-            plantZone plantZone = other.GetComponent<plantZone>();
+            PlantZone plantZone = other.GetComponent<PlantZone>();
 
             if (!plantZone.zoneUsed)
             {
@@ -66,7 +66,7 @@ public class Seeds : MonoBehaviour
             }
         }
     }
-    public void ReceiveDamage(int dmg)
+    public void ReceiveDamage(float dmg)
     {
         health -= dmg;
 

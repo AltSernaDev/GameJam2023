@@ -99,7 +99,8 @@ public class Hook : MonoBehaviour
         {           
             target.transform.parent = null;
             target.GetComponent<Rigidbody>().Sleep();
-            transform.parent.parent.gameObject.GetComponent<Tool>().SaveCollectable(target.GetComponent<Seeds>()); // refactory collectable
+            if (target.GetComponent<Seeds>() != null)
+                transform.parent.parent.gameObject.GetComponent<Tool>().SaveCollectable(target.GetComponent<Seeds>()); // refactory collectable
             done = true;
         }
         else

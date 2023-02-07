@@ -18,4 +18,5 @@ public class SeedsSO : ScriptableObject
     public float growthTime;
     public float probability;
     public int maxDrop;
+    public float sizeModifier = 0.5f;
 }
