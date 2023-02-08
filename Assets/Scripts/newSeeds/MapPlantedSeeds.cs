@@ -76,11 +76,11 @@ public class MapPlantedSeeds : MonoBehaviour
             growing = false;
         else
         {
+            //particle system
             Destroy(skinned.gameObject);
             skinned = null;
             skinned = Instantiate(skin, skinParent.transform).GetComponent<SkinnedMeshRenderer>();
             growthStage = 0;
-            stageOfGrowingTime = 0;
             stageTimer = 0;
             growing = true;
         }
@@ -101,7 +101,5 @@ public class MapPlantedSeeds : MonoBehaviour
 
             yield return new WaitForSeconds(0.5f);
         }
-
-        //partcle system
     }
 }

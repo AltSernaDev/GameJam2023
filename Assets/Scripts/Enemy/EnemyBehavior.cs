@@ -6,11 +6,11 @@ public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] int damage;
 
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
-        if (collision.gameObject.CompareTag("Plant"))
+        if (other.gameObject.CompareTag("Plant"))
         {
-            Seeds enemySeed = collision.gameObject.GetComponent<Seeds>();
+            Seeds enemySeed = other.gameObject.GetComponent<Seeds>();
             enemySeed.ReceiveDamage(damage * Time.deltaTime);
         }
     }

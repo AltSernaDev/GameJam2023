@@ -12,7 +12,7 @@ public class Seeds : MonoBehaviour
     public SeedsSO seedSO;
 
     private TypeSeed type;
-    private float health;
+    [SerializeField] private float health;
     private Sprite icon;
     private GameObject skin;
     private bool plantable;
@@ -69,7 +69,7 @@ public class Seeds : MonoBehaviour
     public void ReceiveDamage(float dmg)
     {
         health -= dmg;
-
+        
         if(health <= 0)
             Destroy(gameObject);
     }
