@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 8842884970656475010}
   - component: {fileID: 186739626817215187}
   - component: {fileID: 5069261973984756136}
-  - component: {fileID: 1346929811947393543}
+  - component: {fileID: 6512650508656648647}
   m_Layer: 0
   m_Name: plantZone
   m_TagString: plantZone
@@ -96,7 +96,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1346929811947393543
+--- !u!114 &6512650508656648647
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
