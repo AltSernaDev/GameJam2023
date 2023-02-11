@@ -25,7 +25,6 @@ public class Tool : MonoBehaviour
     }
     private void Update()
     {
-        aimPoint = AimPoint.instance.aimPoint - canyon.position;
         ActionTool();
         AnimationKeys();
     }
@@ -82,7 +81,7 @@ public class Tool : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            aimPoint = aimPoint.normalized;
+            aimPoint = AimPoint.instance.AimPointV - canyon.position; 
 
             currentCollectable = inventory.RemoveItem();//cambiar 
 
@@ -105,10 +104,11 @@ public class Tool : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2"))
         {
-            aimPoint = aimPoint.normalized;
+            aimPoint = AimPoint.instance.AimPointV - canyon.position; 
             open = true;
 
-            hookInstance = GameObject.Instantiate(hook, canyon);    
+            hookInstance = GameObject.Instantiate(hook, canyon);
+            hookInstance.GetComponent<Rigidbody>().AddForce(aimPoint.normalized * hookSpeed, ForceMode.VelocityChange);
 
             shooting = true;
         }
@@ -123,9 +123,9 @@ public class Tool : MonoBehaviour
         else
             shootTimer += Time.deltaTime;
     }
-    public void SaveCollectable(Seeds collectable)
+    public bool SaveCollectable(Seeds collectable)
     {
-        inventory.AddToInventory(collectable);
+        return inventory.AddToInventory(collectable);
     }
 }
 

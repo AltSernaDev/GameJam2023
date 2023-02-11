@@ -18,6 +18,8 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: d5048ebb0f44d30549f4b1827775375a, type: 3}
   hybrid: 1
   plantable: 1
+  specialBehaviour: {fileID: 4621989843578660977, guid: e4b8e07fb3194124291e23ff6c76dd5d,
+    type: 3}
   growthTime: 70
   probability: 0.6
   maxDrop: 4

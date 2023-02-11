@@ -6,8 +6,28 @@ public class AimPoint : MonoBehaviour
 {
     [SerializeField] LayerMask layerMask;
     public GameObject target;
-    public Vector3 aimPoint;
+    private Vector3 aimPoint;
     public static AimPoint instance;
+
+    public Vector3 AimPointV 
+    { 
+        get
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 10000f, layerMask, QueryTriggerInteraction.Ignore))
+            {
+                target = hit.transform.gameObject;
+                aimPoint = hit.point;
+            }
+            else
+            {
+                target = null;
+                aimPoint = transform.forward * 10000f;
+            }
+            return aimPoint;
+        }
+    }
 
     private void Awake()
     {
@@ -15,22 +35,5 @@ public class AimPoint : MonoBehaviour
             instance = this;
         else
             Destroy(this);
-    }
-
-    void Update()
-    {
-        RaycastHit hit;
-        aimPoint = Vector3.zero;
-
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 10000f, layerMask, QueryTriggerInteraction.Ignore))
-        {
-            target = hit.transform.gameObject;
-            aimPoint = hit.point;
-        }
-        else
-        {
-            target = null;
-            aimPoint = transform.forward * 10000f;
-        }
     }
 }

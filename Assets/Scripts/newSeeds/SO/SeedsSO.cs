@@ -13,6 +13,7 @@ public class SeedsSO : ScriptableObject
     public int health = 100;
     public Sprite icon;
     public bool hybrid, plantable;
+    public GameObject specialBehaviour;
 
     [Header("Plants")]
     public float growthTime;

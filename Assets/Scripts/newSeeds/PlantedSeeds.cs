@@ -24,6 +24,7 @@ public class PlantedSeeds : MonoBehaviour
     GameObject droppingSeed;
     Vector3 skinBaseScale;
     float skinModifierScale = 0.5f;
+    bool timeBuffed, probabiltyBuffed;
 
     public void SetValues()
     {
@@ -93,6 +94,29 @@ public class PlantedSeeds : MonoBehaviour
 
         transform.GetComponentInParent<PlantZone>().zoneUsed = false;
         Destroy(gameObject);
+    }
+    public bool TimeBuff()
+    {
+        if (!timeBuffed)
+        {
+            growthTime = growthTime / 2;
+            stageOfGrowingTime = stageOfGrowingTime / 2;
+
+            timeBuffed = true;
+            return true;
+        }
+        return false;
+    }
+    public bool DropBuff()
+    {
+        if (!probabiltyBuffed)
+        {
+            probability = -1;
+
+            probabiltyBuffed = true;
+            return true;
+        }
+        return false;
     }
 }
 

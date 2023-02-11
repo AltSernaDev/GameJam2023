@@ -10,8 +10,6 @@ using UnityEngine.Events;
 
 public class InventoryManager : MonoBehaviour
 {
-
-
     [SerializeField] private int slotSlectedt = 0;
 
     public Slot[] invetoryItems;
@@ -50,29 +48,29 @@ public class InventoryManager : MonoBehaviour
 
     }
 
-    public void AddToInventory(Seeds item)
+    public bool AddToInventory(Seeds item)
     {
+        bool canAdd = false;
         for (int i = 0; i < invetoryItems.Length; i++)
         {
-            if (invetoryItems[i].itemsCount <= 0)
-            {
-                invetoryItems[i].AddItem(item);
-                onAddItem?.Invoke(i);
-                return;
-            }
-
             if (invetoryItems[i].itemsCount > 0 && item.Type == invetoryItems[i].items[0].Type)
             {
                 if (invetoryItems[i].CanEnqueue())
                 {
                     invetoryItems[i].AddItem(item);
-                    return;
+                    canAdd = true;
+                    return canAdd;
                 }
             }
-            
-
+            else if (invetoryItems[i].itemsCount <= 0)
+            {
+                invetoryItems[i].AddItem(item);
+                onAddItem?.Invoke(i);
+                canAdd = true;
+                return canAdd;
+            }          
         }
-
+        return canAdd;
     }
 
     public Seeds RemoveItem()

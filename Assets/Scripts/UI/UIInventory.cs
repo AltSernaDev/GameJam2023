@@ -15,7 +15,7 @@ public class UIInventory : MonoBehaviour
     {
         SlotSlected(inventoryManager.SlotSlectedt);
         slotUI[0].GetComponentInChildren<Text>().text = inventoryManager.ChangeNumber(0).ToString();
-
+        UpdateStack();
     }
 
     private void Update()

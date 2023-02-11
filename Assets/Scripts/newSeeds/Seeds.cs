@@ -14,7 +14,7 @@ public class Seeds : MonoBehaviour
     private TypeSeed type;
     [SerializeField] private float health;
     private Sprite icon;
-    private GameObject skin;
+    private GameObject skin, specialBehaviour;
     private bool plantable;
 
     [SerializeField] GameObject plantGeneric;
@@ -48,8 +48,22 @@ public class Seeds : MonoBehaviour
     {
         SetValues();
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (seedSO.specialBehaviour != null)
+        {
+            specialBehaviour = Instantiate(seedSO.specialBehaviour, transform);
+            specialBehaviour.GetComponent<SpecialBehaviour>().SAction(collision.gameObject);
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
+        if (seedSO.specialBehaviour != null)
+        {
+            specialBehaviour = Instantiate(seedSO.specialBehaviour, transform);
+            specialBehaviour.GetComponent<SpecialBehaviour>().SAction(other.gameObject);
+        }
+
         if (seedSO.plantable && other.CompareTag("plantZone") && other.GetComponent<PlantZone>() != null)
         {
             PlantZone plantZone = other.GetComponent<PlantZone>();

@@ -24,7 +24,6 @@ public class Hook : MonoBehaviour
     {
         canyon = transform.parent;
         lineRenderer = gameObject.GetComponent<LineRenderer>();
-        gameObject.GetComponent<Rigidbody>().AddForce((AimPoint.instance.aimPoint - canyon.position).normalized * 20, ForceMode.VelocityChange);
     }
     void Update()
     {
@@ -99,8 +98,23 @@ public class Hook : MonoBehaviour
         {           
             target.transform.parent = null;
             target.GetComponent<Rigidbody>().Sleep();
+            target.transform.localScale = Vector3.one;
+
             if (target.GetComponent<Seeds>() != null)
-                transform.parent.parent.gameObject.GetComponent<Tool>().SaveCollectable(target.GetComponent<Seeds>()); // refactory collectable
+            {
+                if (transform.parent.parent.gameObject.GetComponent<Tool>().SaveCollectable(target.GetComponent<Seeds>())) { ; }
+                else
+                    target = null;
+
+            }
+            else if (target.CompareTag("Stone"))
+            {
+                target.SetActive(false);
+                target = null;
+            }
+            else
+                target = null;
+            //drop
             done = true;
         }
         else
