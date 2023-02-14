@@ -7,8 +7,7 @@ public class AchievementBehavior : MonoBehaviour
 {
     [Header("UI Properties")]
     public Text titleLabel;
-    public Text descriptionLabel;
-    public Image lockedIcon, unlockedIcon;
+    public Sprite lockedIcon, unlockedIcon;
 
     [Header("Achievement Config")]
     public bool isLocked;
@@ -17,10 +16,16 @@ public class AchievementBehavior : MonoBehaviour
     public void Refresh()
     {
         titleLabel.text = achievement.title;
-        descriptionLabel.text = achievement.description;
 
-        unlockedIcon.enabled = !isLocked;
-        lockedIcon.enabled = isLocked;
+        switch (isLocked)
+        {
+            case true:
+                GetComponent<Image>().sprite = lockedIcon;
+                break;
+            case false:
+                GetComponent<Image>().sprite = unlockedIcon;
+                break;
+        }
     }
 
     private void OnValidate()
