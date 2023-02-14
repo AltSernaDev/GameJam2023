@@ -8,13 +8,23 @@ public class AchievementBehavior : MonoBehaviour
     [Header("UI Properties")]
     public Text titleLabel;
     public Text descriptionLabel;
-    public Image lockedIcon, unlockedImage;
+    public Image lockedIcon, unlockedIcon;
 
+    [Header("Achievement Config")]
     public bool isLocked;
     public Achievement achievement;
 
     public void Refresh()
     {
         titleLabel.text = achievement.title;
+        descriptionLabel.text = achievement.description;
+
+        unlockedIcon.enabled = !isLocked;
+        lockedIcon.enabled = isLocked;
+    }
+
+    private void OnValidate()
+    {
+        Refresh();
     }
 }
