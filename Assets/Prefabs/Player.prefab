@@ -152,6 +152,17 @@ MonoBehaviour:
   - {fileID: 1860738985}
   - {fileID: 1369575981}
   - {fileID: 269080918}
+  achievementLoader: {fileID: 0}
+  collectedSeedsA: 0
+  collectedSeedsB: 0
+  collectedSeedsC: 0
+  collectedSeedsD: 0
+  collectedSeedsAB: 0
+  collectedSeedsBC: 0
+  collectedSeedsAC: 0
+  collectedSeedsDA: 0
+  collectedSeedsDB: 0
+  collectedSeedsDC: 0
 --- !u!1 &1369575979
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,6 +616,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1232706115622309731}
     m_Modifications:
+    - target: {fileID: 2166476903733164019, guid: da32189702d82344994144ee3250df80,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2470574076246078635, guid: da32189702d82344994144ee3250df80,
         type: 3}
       propertyPath: m_LocalPosition.x

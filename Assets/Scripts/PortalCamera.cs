@@ -7,7 +7,10 @@ public class PortalCamera : MonoBehaviour
 {
     public Transform playerCamera, portal, otherPortal;
 
-
+    private void Start()
+    {
+        playerCamera = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0);
+    }
     void FixedUpdate()
     {
         Vector3 playerOffsetFromPortal = playerCamera.position - otherPortal.position;

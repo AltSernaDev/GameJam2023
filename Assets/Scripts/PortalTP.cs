@@ -10,6 +10,11 @@ public class PortalTP : MonoBehaviour
 
     bool playerOverlap;
 
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
     void Update()
     {
         if(playerOverlap)
