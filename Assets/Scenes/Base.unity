@@ -17357,11 +17357,6 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 805974063}
-    - target: {fileID: 8280966797424524983, guid: efcd222459a5497428cd12d4b02124fe,
-        type: 3}
-      propertyPath: far clip plane
-      value: 65.7
-      objectReference: {fileID: 0}
     - target: {fileID: 8280966797546764281, guid: efcd222459a5497428cd12d4b02124fe,
         type: 3}
       propertyPath: player
@@ -17387,11 +17382,6 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 805974063}
-    - target: {fileID: 8280966797890493387, guid: efcd222459a5497428cd12d4b02124fe,
-        type: 3}
-      propertyPath: far clip plane
-      value: 102.2
-      objectReference: {fileID: 0}
     - target: {fileID: 8280966798063297934, guid: efcd222459a5497428cd12d4b02124fe,
         type: 3}
       propertyPath: player
@@ -17412,11 +17402,6 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 805974063}
-    - target: {fileID: 8280966798578439215, guid: efcd222459a5497428cd12d4b02124fe,
-        type: 3}
-      propertyPath: far clip plane
-      value: 89.6
-      objectReference: {fileID: 0}
     - target: {fileID: 8280966798685204957, guid: efcd222459a5497428cd12d4b02124fe,
         type: 3}
       propertyPath: playerCamera
@@ -17512,10 +17497,5 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 805974063}
-    - target: {fileID: 8280966799458012338, guid: efcd222459a5497428cd12d4b02124fe,
-        type: 3}
-      propertyPath: far clip plane
-      value: 50.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efcd222459a5497428cd12d4b02124fe, type: 3}

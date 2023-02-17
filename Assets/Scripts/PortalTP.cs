@@ -20,7 +20,8 @@ public class PortalTP : MonoBehaviour
             if (dotProduct>0f)
             {
                 TempleChecker.tempCheckerCode.down = downTP;
-                TempleChecker.tempCheckerCode.temple = (TempleChecker.Temple)thisTempNum;
+                //TempleChecker.tempCheckerCode.temple = (TempleChecker.Temple)thisTempNum;
+                TempleChecker.tempCheckerCode.UpdateCameras(thisTempNum);
                 player.gameObject.GetComponent<CharacterController>().enabled= false;
                 float rotationDiff = -Quaternion.Angle(transform.rotation, receiver.rotation);
                 rotationDiff += 180;
