@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c5f919ebdb92c047a958f23c0cf87ac, type: 3}
-  m_Name: Achievement Data Base
+  m_Name: AchievementsDataBase
   m_EditorClassIdentifier: 
-  achivements: []
+  achievements: []

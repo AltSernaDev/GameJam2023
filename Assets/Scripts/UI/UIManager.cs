@@ -6,13 +6,17 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject panelMenu;
+    [SerializeField] private GameObject panelMenu , progressionMap;
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             PauseGame();
+        }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            ShowProgression();
         }
     }
     public void PauseGame()
@@ -39,6 +43,14 @@ public class UIManager : MonoBehaviour
     {
 
     }
+    public void ShowProgression()
+    {
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        progressionMap.SetActive(true);
+    }
+
     public void ExitGame()
     {
         Application.Quit();

@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu()]
-public class AchievementDataBase : ScriptableObject
+[System.Serializable , CreateAssetMenu(fileName = "AchievementsDataBase")]
+public class AchievementDataBase: ScriptableObject
 {
-    public List<Achievement> achivements;
+    public Achievement[] achievements = new Achievement[10];
 }
