@@ -5,9 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class EndGame : MonoBehaviour
 {
-    int keys = 0;
     bool da, db, dc;
+    [SerializeField] GameObject panel;
 
+    private void Awake()
+    {
+        panel.SetActive(false);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Seeds>() != null)
@@ -31,7 +35,7 @@ public class EndGame : MonoBehaviour
         }
         if (da && db && dc) 
         {
-            ScenesManager.instance.LoadScene(0);
+            StartCoroutine(Final());
         }
     }
     private void OnTriggerExit(Collider other)
@@ -55,5 +59,15 @@ public class EndGame : MonoBehaviour
                     break;
             }
         }
+    }
+    IEnumerator Final()
+    {
+        yield return new WaitForSeconds(2);
+
+        panel.SetActive(true);
+
+        yield return new WaitForSeconds(8);
+
+        ScenesManager.instance.LoadScene(0);
     }
 }
