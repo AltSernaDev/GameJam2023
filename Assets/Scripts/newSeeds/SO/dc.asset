@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 752ffdb0576f43b49a7d4fd0d27d90fc, type: 3}
   m_Name: dc
   m_EditorClassIdentifier: 
-  type: 14
+  type: 12
+  skin: {fileID: 5836520755714407662, guid: 128cf0f4c3101004f885b0289e3fbf25, type: 3}
   health: 100
   icon: {fileID: 21300000, guid: 9d7ad4cee6ac58c38b369f0acdd8eb61, type: 3}
-  skin: {fileID: 5836520755714407662, guid: 128cf0f4c3101004f885b0289e3fbf25, type: 3}
   hybrid: 1
   plantable: 0
+  specialBehaviour: {fileID: 0}
+  growthTime: 0
+  probability: 0
+  maxDrop: 0
+  sizeModifier: 0.5

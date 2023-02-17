@@ -76,6 +76,7 @@ public class FollowTarget : MonoBehaviour
             if (other.transform == target)
                 target = null;
             plants.Remove(other.transform);
+            target = null;
         }
     }
 }
