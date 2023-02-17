@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class EndGame : MonoBehaviour
 {
     int keys = 0;
+    bool da, db, dc;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Seeds>() != null)
@@ -15,21 +17,21 @@ public class EndGame : MonoBehaviour
                 case TypeSeed.d:
                     break;
                 case TypeSeed.da:
-                    keys++;
+                    da = true;
                     break;
                 case TypeSeed.db:
-                    keys++;
+                    db = true;
                     break;
                 case TypeSeed.dc:
-                    keys++;
+                    dc = true;
                     break;
                 default:
                     break;
             }
         }
-        if (keys >= 3)
+        if (da && db && dc) 
         {
-            //supereme victory
+            ScenesManager.instance.LoadScene(0);
         }
     }
     private void OnTriggerExit(Collider other)
@@ -41,13 +43,13 @@ public class EndGame : MonoBehaviour
                 case TypeSeed.d:
                     break;
                 case TypeSeed.da:
-                    keys--;
+                    da = false;
                     break;
                 case TypeSeed.db:
-                    keys--;
+                    db = false;
                     break;
                 case TypeSeed.dc:
-                    keys--;
+                    dc = false;
                     break;
                 default:
                     break;

@@ -12,13 +12,21 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            pauseMenu.SetActive(true);
-            PauseGame();            
+            pauseMenu.SetActive(!pauseMenu.activeSelf);
+
+            if (!pauseMenu.activeSelf)
+                UnPauseGame();
+            else
+                PauseGame();
         }
         if (Input.GetKeyDown(KeyCode.F))
-        {
-            progressionMap.SetActive(true);
-            ShowProgression();            
+        {       
+            progressionMap.SetActive(!progressionMap.activeSelf);  
+
+            if (!progressionMap.activeSelf)
+                UnPauseGame();
+            else
+                ShowProgression();          
         }
     }
     public void PauseGame()
@@ -33,6 +41,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
         pauseMenu.SetActive(false);
         progressionMap.SetActive(false);
     }
