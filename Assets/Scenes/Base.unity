@@ -1194,18 +1194,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1611626325}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &122765189 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4442649507703935928, guid: 0d7eafa189889d14c90725e6b56bb512,
-    type: 3}
-  m_PrefabInstance: {fileID: 1611626325}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2e0db7d198bcf3469ebd5cf38aabbad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &124868569
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1549,7 +1537,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 884421824}
   progressionMap: {fileID: 569004767}
-  inventoryPanel: {fileID: 239087023}
 --- !u!4 &143316642 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8842884970656475010, guid: e2a1f1bbbee802149a02af62b2501be1,
@@ -1890,7 +1877,7 @@ GameObject:
   - component: {fileID: 218227384}
   - component: {fileID: 218227386}
   m_Layer: 5
-  m_Name: Map
+  m_Name: Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1982,11 +1969,10 @@ MonoBehaviour:
   - {fileID: 1026286928}
   - {fileID: 952965494}
   - {fileID: 627118169}
-  - {fileID: 1973969888}
   - {fileID: 1744143705}
+  - {fileID: 1973969888}
   - {fileID: 2011206275}
   - {fileID: 828215874}
-  - {fileID: 122765189}
   dataBase: {fileID: 11400000, guid: 78bc6778a84ef214c8db0e099264ca4f, type: 2}
 --- !u!1001 &218449308
 PrefabInstance:
@@ -6694,6 +6680,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 969688259, guid: ed5d3e35ee4b5ba49b5a0cf1eddfdc64, type: 3}
+      propertyPath: achievementLoader
+      value: 
+      objectReference: {fileID: 218227386}
     - target: {fileID: 1232706116024293768, guid: ed5d3e35ee4b5ba49b5a0cf1eddfdc64,
         type: 3}
       propertyPath: m_RootOrder

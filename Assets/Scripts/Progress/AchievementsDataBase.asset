@@ -12,4 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5f919ebdb92c047a958f23c0cf87ac, type: 3}
   m_Name: AchievementsDataBase
   m_EditorClassIdentifier: 
-  achievements: []
+  achievements:
+  - title: A Seed
+    id: A-Seed
+    isLocked: 1
+  - title: B Seed
+    id: B-Seed
+    isLocked: 1
+  - title: C Seed
+    id: C-Seed
+    isLocked: 1
+  - title: D Seed
+    id: D-Seed
+    isLocked: 1
+  - title: AB Seed
+    id: AB-Seed
+    isLocked: 1
+  - title: BC Seed
+    id: BC-Seed
+    isLocked: 0
+  - title: AC Seed
+    id: AC-Seed
+    isLocked: 0
+  - title: DA Seed
+    id: DA-Seed
+    isLocked: 1
+  - title: DB Seed
+    id: DB-Seed
+    isLocked: 1
+  - title: DC Seed
+    id: DC-Seed
+    isLocked: 1
