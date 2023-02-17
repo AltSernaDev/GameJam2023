@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class AchievementLoader : MonoBehaviour
 {
-    public static AchievementLoader instance;
     public List<AchievementBehavior> gameAchievements;
     [SerializeField] AchievementDataBase dataBase;
 
-    private void Awake()
+    private void Start()
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else instance = this;
+        SaveAchievements();
     }
     public void SaveAchievements()
     {

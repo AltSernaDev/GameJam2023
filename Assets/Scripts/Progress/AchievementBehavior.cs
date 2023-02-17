@@ -55,5 +55,6 @@ public class AchievementBehavior : MonoBehaviour
     public void UnlockedAchievement()
     {
         achievement.isLocked = false;
+        Refresh();
     }
 }

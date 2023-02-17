@@ -6,17 +6,19 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject panelMenu , progressionMap;
+    [SerializeField] private GameObject pauseMenu, progressionMap;
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            PauseGame();
+            pauseMenu.SetActive(true);
+            PauseGame();            
         }
         if (Input.GetKeyDown(KeyCode.J))
         {
-            ShowProgression();
+            progressionMap.SetActive(true);
+            ShowProgression();            
         }
     }
     public void PauseGame()
@@ -24,7 +26,6 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        panelMenu.SetActive(true);
     }
 
     public void UnPauseGame()
@@ -32,7 +33,8 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        panelMenu.SetActive(false);
+        pauseMenu.SetActive(false);
+        progressionMap.SetActive(false);
     }
 
     public void Play()
@@ -45,10 +47,10 @@ public class UIManager : MonoBehaviour
     }
     public void ShowProgression()
     {
-        Time.timeScale = 0;
+        PauseGame();
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        progressionMap.SetActive(true);
     }
 
     public void ExitGame()
