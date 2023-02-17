@@ -97,8 +97,10 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: ed77657d640ead44e8c03068d4bec8c7,
+    type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: be986ec742ae6204aa48c38a336b5df8,
+    type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -12053,6 +12055,7 @@ GameObject:
   - component: {fileID: 1934589756}
   - component: {fileID: 1934589755}
   - component: {fileID: 1934589757}
+  - component: {fileID: 1934589758}
   m_Layer: 0
   m_Name: UI Manager
   m_TagString: Untagged
@@ -12072,7 +12075,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51df39519a23124efbdc2322caa4fadd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelMenu: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  progressionMap: {fileID: 0}
 --- !u!4 &1934589756
 Transform:
   m_ObjectHideFlags: 0
@@ -12102,6 +12106,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volumeSlider: {fileID: 1582801750}
   volumeValueText: {fileID: 465140321}
+--- !u!114 &1934589758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934589754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367ecb4b2a5a25e4db4b52b1c08bd534, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1941158247
 PrefabInstance:
   m_ObjectHideFlags: 0
