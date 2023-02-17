@@ -10,12 +10,12 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             pauseMenu.SetActive(true);
             PauseGame();            
         }
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             progressionMap.SetActive(true);
             ShowProgression();            
