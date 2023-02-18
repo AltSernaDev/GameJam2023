@@ -29,10 +29,10 @@ public class FollowTarget : MonoBehaviour
         yield return null;
         for (int i = 0; i < plants.Count; i++)
         {
-            if (plants[i] == null)
+            if (plants[i] == null || plants[i].gameObject.activeSelf == false)
                 plants.RemoveAt(i);
         }
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
         StartCoroutine(CheckList());
     }
 
@@ -56,17 +56,22 @@ public class FollowTarget : MonoBehaviour
     void FindTarget()
     {
         if (plants.Count > 0 && target == null)
-            target = plants[Random.Range(0, plants.Count)]; 
+            target = plants[Random.Range(0, plants.Count)];
 
         if (target != null)
+        {
             agent.SetDestination(target.position);
+
+            if (target.gameObject.activeSelf == false)
+                target = null;
+        }
         else
             agent.SetDestination(transform.position);
     }
     private void OnTriggerEnter(Collider other)
     {
         //if ((1 << other.gameObject.layer) == layer)
-        if (other.CompareTag(tag))
+        if (other.CompareTag(tag) && !plants.Contains(other.transform))
             plants.Add(other.transform);
     }
     private void OnTriggerExit(Collider other)
@@ -76,7 +81,6 @@ public class FollowTarget : MonoBehaviour
             if (other.transform == target)
                 target = null;
             plants.Remove(other.transform);
-            target = null;
         }
     }
 }
